@@ -50,7 +50,7 @@ func CounterHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			res.Data = count
 			fmt.Println("---------------")
-			fmt.Println(res.Data)
+			fmt.Println("---------------")
 			
 		}
 	} else {
