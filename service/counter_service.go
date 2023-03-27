@@ -49,6 +49,9 @@ func CounterHandler(w http.ResponseWriter, r *http.Request) {
 			res.ErrorMsg = err.Error()
 		} else {
 			res.Data = count
+			fmt.Println("---------------")
+			fmt.Println(res.Data)
+			
 		}
 	} else {
 		res.Code = -1
