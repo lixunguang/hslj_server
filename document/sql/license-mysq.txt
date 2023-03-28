@@ -1,0 +1,227 @@
+select version();
+select database();
+
+show databases;
+create database license;
+use license;
+
+alter table user_product default character set utf8;
+show create table user;
+
+# token中存储 user_id user_name role_id role_name
+#不设置唯一键，在业务中处理
+#license授权相关表设计
+select *from user;
+
+select *from user where is_deleted = 1;
+# alter table user drop product_id;
+select * from user;
+# 1 用户表
+CREATE TABLE `user` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`real_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '姓名',
+`user_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '用户名称(账号)',
+`password` varchar(50)  NOT NULL DEFAULT '' COMMENT '密码',
+`role_id` tinyint(4)  NOT NULL DEFAULT '0' COMMENT '角色id',
+`creator_id` int(11)  NOT NULL DEFAULT '0' COMMENT '创建人id',
+`creator_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '创建人姓名',
+`is_deleted` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否删除 1-否 2-是',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '用户表';
+
+# 用户产品权限表
+# drop table  user_product;
+insert into user_product (user_id, product_id) values (1,1),(1,2);
+insert into user_product (user_id, product_id) values (2,1);
+select *from user_product;
+CREATE TABLE `user_product` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`user_id` int(11)  NOT NULL DEFAULT '0' COMMENT '用户id',
+`product_id` int(11)  NOT NULL DEFAULT '0' COMMENT '产品id',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '用户产品权限表';
+
+#2 角色表
+select *  from role;
+CREATE TABLE `role` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`role_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '角色名称',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '角色表';
+
+#3 角色禁止访问表
+# select * from role_forbidden_access;
+# drop table role_forbidden_access;
+#
+# CREATE TABLE `role_forbidden_access` (
+# `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+# `role_id` tinyint(4)  NOT NULL DEFAULT '0' COMMENT '角色id',
+# `forbidden_access_api` varchar(200)  NOT NULL DEFAULT '' COMMENT '禁止访问的api',
+# `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+# `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+# PRIMARY KEY (`id`)
+# ) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '角色禁止访问表';
+
+#3 角色权限表
+# drop table role_menu;
+select * from role_menu;
+# insert into role_menu (role_id, menu_id) value (1,1);
+# insert into role_menu (role_id, menu_id) value (1,2);
+# insert into role_menu (role_id, menu_id) value (1,3);
+# insert into role_menu (role_id, menu_id) value (1,4);
+
+insert into role_menu (role_id, menu_id) values (2,2),(2,3),(2,4);
+# utf8mb4
+CREATE TABLE `role_menu` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`role_id` tinyint(4)  NOT NULL DEFAULT '0' COMMENT '角色id',
+`menu_id` int(11)  NOT NULL DEFAULT '0' COMMENT '菜单id',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '角色权限表';
+
+# drop table menu;
+#4菜单表
+select *from menu;
+# insert into menu (menu_name, menu_flag) value ("权限管理","power-manage");
+# insert into menu (menu_name, menu_flag) value ("授权管理","authorize-manage");
+# insert into menu (menu_name, menu_flag) value ("客户管理","custom-manage");
+# insert into menu (menu_name, menu_flag) value ("产品管理","product-manage");
+CREATE TABLE `menu` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`menu_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '菜单名称',
+`menu_flag` varchar(100)  NOT NULL DEFAULT '' COMMENT '菜单标识',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '菜单表';
+
+select *from user_product;
+
+#4 产品表
+select * from product;
+show create table product;
+alter table product modify `description` text COMMENT '说明';
+CREATE TABLE `product` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`product_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '产品名称',
+`product_type` varchar(100)  NOT NULL DEFAULT '' COMMENT '产品类型',
+`current_version` varchar(100)  NOT NULL DEFAULT '' COMMENT '当前版本',
+`description` text COMMENT '说明',
+`creator_id` int(11)  NOT NULL DEFAULT '0' COMMENT '创建人id',
+`creator_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '创建人姓名',
+`is_deleted` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否删除 1-否 2-是',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '产品表';
+
+# 操作记录表
+#5 客户表 Customer
+show create table customer;
+select *from customer;
+# alter table customer add column serial_number varchar(100)  NOT NULL DEFAULT '' COMMENT '编号' after phone;
+CREATE TABLE `customer` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`customer_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '客户名称',
+`contact_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '联系人',
+`phone` varchar(20)  NOT NULL DEFAULT '' COMMENT '联系电话',
+`serial_number` varchar(100)  NOT NULL DEFAULT '' COMMENT '编号',
+`creator_id` int(11)  NOT NULL DEFAULT '0' COMMENT '创建人id',
+`creator_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '创建人姓名',
+`is_deleted` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否删除 1-否 2-是',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '客户表';
+
+# 授权列表
+show create table authorization_list;
+# drop table authorization_list;
+delete from  authorization_list where id >5;
+select * from authorization_list;
+delete from authorization_list where id < 9;
+insert into authorization_list (serial_number ) value ("A");
+select *from authorization_list where serial_number = "9B89E94E76740803";
+select * from authorization_list order by id desc;
+alter table authorization_list drop latest_generate_time;
+# alter table authorization_list drop product_id;
+# alter table authorization_list add column `customer_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '客户名称' after current_type;
+# alter table authorization_list add column `product_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '产品名称' after current_type;
+# update authorization_list set product_name = (select product_name from product where product.id = (select product_id from authorization_log where authorization_log.serial_number = authorization_list.serial_number order by id desc limit 1));
+# update authorization_list set customer_name = (select customer_name from customer where customer.id = (select customer_id from authorization_log where authorization_log.serial_number = authorization_list.serial_number order by id desc limit 1));
+# alter table authorization_list add column `latest_generate_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最新生成时间' after operator_name;
+# update authorization_list set latest_generate_time = (select created_at from authorization_log where authorization_list.serial_number = authorization_log.serial_number order by id desc limit 1);
+CREATE TABLE `authorization_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `serial_number` varchar(100) NOT NULL DEFAULT '' COMMENT '序列号',
+  `current_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '当前类型：1-new 2-update',
+  `customer_name` varchar(100) NOT NULL DEFAULT '' COMMENT '客户名称',
+  `product_name` varchar(100) NOT NULL DEFAULT '' COMMENT '产品名称',
+  `volumn_id` varchar(100) NOT NULL DEFAULT '' COMMENT '硬盘序号',
+  `check_volumn_id` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否检测硬盘序号：1-否 2-是',
+  `mac_id` varchar(100) NOT NULL DEFAULT '' COMMENT 'MAC地址',
+  `check_mac_id` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否检测MAC地址：1-否 2-是',
+  `cpu_id` varchar(100) NOT NULL DEFAULT '' COMMENT 'cpu序号',
+  `check_cpu_id` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否检测cpu序号：1-否 2-是',
+  `authorization_type` tinyint(4) NOT NULL DEFAULT '1' COMMENT '授权方式：1-本地授权 2-网络授权',
+  `product_version` varchar(50) NOT NULL DEFAULT '' COMMENT '产品版本',
+  `max_user_count` int(11) NOT NULL DEFAULT '0' COMMENT '最大用户数',
+  `expired_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '过期时间',
+  `operator_id` int(11) NOT NULL DEFAULT '0' COMMENT '操作人id',
+  `operator_name` varchar(50) NOT NULL DEFAULT '' COMMENT '操作人姓名',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COMMENT='授权列表';
+
+
+
+# drop table authorization_log;
+select *  from authorization_log order by id desc ;
+
+select *from authorization_log where serial_number= "9B89E94E76740803";
+show create table authorization_log;
+update authorization_log set is_user = 2 where id > 0;
+select * from authorization_log order by id desc;
+delete from authorization_log where id = 24;
+alter table authorization_log add column `request_code` text  COMMENT '请求码' after is_user;
+alter table authorization_log add column `license` text  COMMENT '生成的license' after is_user;
+# alter table authorization_log add column `is_user` tinyint(4)  NOT NULL DEFAULT '0' COMMENT '是否是用户生成的请求文件：1-否 2-是' after expired_at;
+# 授权记录(需要记录下生成license所需要的所有信息。客户名称可能会变化，这里需要记录快照。)
+CREATE TABLE `authorization_log` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键',
+`serial_number` varchar(100)  NOT NULL DEFAULT '' COMMENT '序列号',
+`license_id` varchar(100)  NOT NULL DEFAULT '' COMMENT 'license_id',
+`type` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '当前类型：1-new 2-update',
+`customer_id` int(11)  NOT NULL DEFAULT '0' COMMENT '客户id',
+`customer_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '客户名称',
+`volumn_id` varchar(100)  NOT NULL DEFAULT '' COMMENT '硬盘序号',
+`check_volumn_id` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否检测硬盘序号：1-否 2-是',
+`mac_id` varchar(100)  NOT NULL DEFAULT '' COMMENT 'MAC地址',
+`check_mac_id` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否检测MAC地址：1-否 2-是',
+`cpu_id` varchar(100)  NOT NULL DEFAULT '' COMMENT 'cpu序号',
+`check_cpu_id` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '是否检测cpu序号：1-否 2-是',
+`authorization_type` tinyint(4)  NOT NULL DEFAULT '1' COMMENT '授权方式：1-网络授权 2-本地授权',
+`product_id` int(11)  NOT NULL DEFAULT '0' COMMENT '产品id',
+`product_name` varchar(100)  NOT NULL DEFAULT '' COMMENT '产品名称',
+`product_version` varchar(50)  NOT NULL DEFAULT '' COMMENT '产品版本',
+`max_user_count` int(11)  NOT NULL DEFAULT '0' COMMENT '最大用户数',
+`expired_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '过期时间',
+`is_user` tinyint(4)  NOT NULL DEFAULT '0' COMMENT '是否是用户生成的请求文件：1-否 2-是',
+`request_code` text  COMMENT '请求码',
+`license` text  COMMENT '生成的license',
+`status` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'license生成状态：1-成功 2-失败',
+`operator_id` int(11)  NOT NULL DEFAULT '0' COMMENT '操作人id',
+`operator_name` varchar(50)  NOT NULL DEFAULT '' COMMENT '操作人姓名',
+`created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8 COMMENT = '授权记录表';

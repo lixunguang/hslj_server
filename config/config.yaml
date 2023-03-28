@@ -1,0 +1,24 @@
+Server:
+  RunMode: debug
+  HttpPort: 8060
+Database:
+  UserName: root
+  Password: "0925"
+  Host: 127.0.0.1
+  Port: "3306"
+  DBName: ibe_edu
+  Charset: utf8
+  ParseTime: True
+  Timeout: 10s
+  MaxIdleConns: 10
+  MaxOpenConns: 20
+Redis:
+  Host: 127.0.0.1
+  Port: 6379
+  Password:
+  DB: 0
+  PoolSize: 3
+Logger:
+  LogFileDir: /data/log # 日志目录
+  ProjectName: gene
+  CaseRunLogDir: case_run_log
