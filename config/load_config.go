@@ -13,8 +13,8 @@ func init() {
 
 func loadConfig() {
 	vp := viper.New()
-	//vp.AddConfigPath("./config")
-	vp.AddConfigPath(getConfigDirPath()) //相对main.go 或 test文件的路径
+	vp.AddConfigPath("/app/config")
+	//vp.AddConfigPath(getConfigDirPath()) //相对main.go 或 test文件的路径
 	vp.SetConfigName("config")
 	vp.SetConfigType("yaml")
 	err := vp.ReadInConfig()
