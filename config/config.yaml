@@ -3,8 +3,8 @@ Server:
   HttpPort: 8060
 Database:
   UserName: root
-  Password: "0925"
-  Host: 127.0.0.1
+  Password: "Gotohell@1"
+  Host: 10.6.105.7
   Port: "3306"
   DBName: ibe_edu
   Charset: utf8
