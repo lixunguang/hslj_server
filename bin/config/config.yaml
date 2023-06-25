@@ -3,7 +3,7 @@ Server:
   HttpPort: 8010
 Database:
   UserName: root
-  Password: "ibe" #"Gotohell@1" #0925
+  Password: "Gotohell@1" #"Gotohell@1" #0925
   Host: 10.30.104.251 #127.0.0.1 :3306
   Port: "3306"
   DBName: HSLJ_DB
