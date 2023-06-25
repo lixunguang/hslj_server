@@ -26,11 +26,6 @@ func hsljRouter(e *gin.Engine) {
 
 	g.POST("/user", controller.GetUser) //后台api与平台api共用一个
 
-	g.POST("/teacher/add", controller.AddTeacher) //增加教师
-	g.POST("/teacher/del", controller.DelTeacher)
-	g.POST("/teacher/all", controller.AllTeacher)
-	g.POST("/teacher/update", controller.UpdateTeacher)
-
 	// 管理员 增加 删除 查找
 	g.POST("/administrator/add", controller.AddAdmin)
 	g.POST("/administrator/del", controller.DelAdmin)
