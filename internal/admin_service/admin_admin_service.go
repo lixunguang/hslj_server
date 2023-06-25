@@ -1,15 +1,15 @@
 package admin_service
 
 import (
+	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
 	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
 )
 
-func AddAdmin(ctx *gin.Context, param dto.Admin) (dto.AdminRes, cerror.Cerror) {
+func AddAdmin(ctx *gin.Context, param admin_dto.Admin) (admin_dto.AdminRes, cerror.Cerror) {
 
-	var getParam dto.AdminParam
+	var getParam admin_dto.AdminParam
 	getParam.Name = param.Name
 	adminArray, _ := dao.GetAdmin(ctx, getParam)
 
@@ -17,17 +17,17 @@ func AddAdmin(ctx *gin.Context, param dto.Admin) (dto.AdminRes, cerror.Cerror) {
 		return dao.AddAdmin(ctx, param)
 	}
 
-	var res dto.AdminRes
+	var res admin_dto.AdminRes
 	return res, cerror.ErrorUserExist
 }
 
-func DelAdmin(ctx *gin.Context, param dto.AdminParam) ([]dto.AdminRes, cerror.Cerror) {
+func DelAdmin(ctx *gin.Context, param admin_dto.AdminParam) ([]admin_dto.AdminRes, cerror.Cerror) {
 
-	var res []dto.AdminRes
+	var res []admin_dto.AdminRes
 	admins, err := dao.DelAdmin(ctx, param)
 
 	for _, v := range admins {
-		var t dto.AdminRes
+		var t admin_dto.AdminRes
 		t.Name = v.Name
 		t.ID = v.ID
 
@@ -37,6 +37,6 @@ func DelAdmin(ctx *gin.Context, param dto.AdminParam) ([]dto.AdminRes, cerror.Ce
 	return res, err
 }
 
-func GetAdmin(ctx *gin.Context, param dto.AdminParam) ([]dao.Admin, cerror.Cerror) {
+func GetAdmin(ctx *gin.Context, param admin_dto.AdminParam) ([]dao.Admin, cerror.Cerror) {
 	return dao.GetAdmin(ctx, param)
 }

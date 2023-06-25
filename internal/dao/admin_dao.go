@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"edu-imp/internal/dto"
+	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/model/mysql"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
@@ -24,13 +24,13 @@ func (Admin) TableName() string {
 	return "admin"
 }
 
-func AddAdmin(ctx *gin.Context, param dto.Admin) (dto.AdminRes, cerror.Cerror) {
+func AddAdmin(ctx *gin.Context, param admin_dto.Admin) (admin_dto.AdminRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	admin := Admin{Name: param.Name, Password: param.Password}
 	result := mysqlDB.Create(&admin)
 
-	var res dto.AdminRes
+	var res admin_dto.AdminRes
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
@@ -43,7 +43,7 @@ func AddAdmin(ctx *gin.Context, param dto.Admin) (dto.AdminRes, cerror.Cerror) {
 	return res, nil
 }
 
-func GetAdmin(ctx *gin.Context, param dto.AdminParam) ([]Admin, cerror.Cerror) {
+func GetAdmin(ctx *gin.Context, param admin_dto.AdminParam) ([]Admin, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var admin Admin
@@ -60,7 +60,7 @@ func GetAdmin(ctx *gin.Context, param dto.AdminParam) ([]Admin, cerror.Cerror) {
 	return adminArray, nil
 }
 
-func DelAdmin(ctx *gin.Context, param dto.AdminParam) ([]Admin, cerror.Cerror) {
+func DelAdmin(ctx *gin.Context, param admin_dto.AdminParam) ([]Admin, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var admin Admin

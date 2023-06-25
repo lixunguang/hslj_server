@@ -1,9 +1,9 @@
 package admin_controller
 
 import (
+	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/admin_service"
 	"edu-imp/internal/common"
-	"edu-imp/internal/dto"
 	"edu-imp/internal/middleware"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
@@ -55,7 +55,7 @@ func CheckAdminAuth(ctx *gin.Context) {
 func AdminLogin(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "Login Controller")
 	// 获取参数
-	var param dto.AdminLoginParam
+	var param admin_dto.AdminLoginParam
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind params fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -71,18 +71,18 @@ func AdminLogin(ctx *gin.Context) {
 
 	// 结果返回
 	if res.Code() == cerror.ErrorLoginSucc.Code() {
-		var loginRes dto.LoginRes
+		var loginRes admin_dto.LoginRes
 		loginRes.Token = tokenStr
 
 		util.SuccessJson(ctx, loginRes)
 	} else if res.Code() == cerror.ErrorLoginAgain.Code() {
-		var loginRes dto.LoginRes
+		var loginRes admin_dto.LoginRes
 		loginRes.Token = tokenStr
 
 		util.FailJsonData(ctx, cerror.ErrorLoginAgain, loginRes)
 
 	} else if res.Code() == cerror.ErrorUserAuthSucc.Code() {
-		var loginRes dto.LoginRes
+		var loginRes admin_dto.LoginRes
 		loginRes.Token = tokenStr
 
 		util.SuccessJson(ctx, loginRes)
@@ -139,7 +139,7 @@ type UserFake struct {
 	Certification    int    `json:"certification"`
 
 	Role int `json:"role"`
-	dto.UserRes
+	admin_dto.UserRes
 }
 
 func GetIdFromToken(tokenStr string) string { //
@@ -169,7 +169,7 @@ func GetUser(ctx *gin.Context) {
 
 	//参数校验
 
-	var param dto.AdminParam
+	var param admin_dto.AdminParam
 	param.Name = loginId
 	//调用service
 	user, err := admin_service.GetAdmin(ctx, param)

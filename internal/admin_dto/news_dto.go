@@ -1,4 +1,4 @@
-package dto
+package admin_dto
 
 //新闻输入参数
 type NewsAddParam struct {

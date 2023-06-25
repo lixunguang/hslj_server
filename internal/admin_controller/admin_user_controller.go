@@ -3,8 +3,6 @@ package admin_controller
 import (
 	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/admin_service"
-	"edu-imp/internal/dto"
-	"edu-imp/internal/service"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
 	"edu-imp/pkg/util"
@@ -14,7 +12,7 @@ import (
 func AddUser(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "AddUser Controller")
 	//获取参数
-	var param dto.User
+	var param admin_dto.User
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -31,7 +29,7 @@ func AddUser(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	res, err := service.AddUser(ctx, param)
+	res, err := admin_service.AddUser(ctx, param)
 
 	//结果返回
 	if err == nil {
@@ -45,7 +43,7 @@ func AddUser(ctx *gin.Context) {
 func DelUser(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "DelUser Controller")
 	//获取参数
-	var param dto.IDParam2
+	var param admin_dto.IDParam2
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -57,7 +55,7 @@ func DelUser(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	res, err := service.DelUser(ctx, param.LoginID)
+	res, err := admin_service.DelUser(ctx, param.LoginID)
 
 	//结果返回
 	if err == nil {
@@ -71,7 +69,7 @@ func DelUser(ctx *gin.Context) {
 func UpdateUser(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "UpdateUser Controller")
 	//获取参数
-	var param dto.User
+	var param admin_dto.User
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -83,7 +81,7 @@ func UpdateUser(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	res, err := service.UpdateUser(ctx, param)
+	res, err := admin_service.UpdateUser(ctx, param)
 
 	//结果返回
 	if err == nil {
@@ -101,7 +99,7 @@ func AllUser(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	res, err := service.AllUser(ctx)
+	res, err := admin_service.AllUser(ctx)
 
 	//结果返回
 	if err == nil {
@@ -115,7 +113,7 @@ func AllUser(ctx *gin.Context) {
 func AddAdmin(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "AddAdmin Controller")
 	//获取参数
-	var param dto.Admin
+	var param admin_dto.Admin
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -142,7 +140,7 @@ func DelAdmin(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "DelAdmin Controller")
 
 	//获取参数
-	var param dto.AdminParam
+	var param admin_dto.AdminParam
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)
@@ -215,7 +213,7 @@ func AllTeacher(ctx *gin.Context) {
 func DelTeacher(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "DelTeacher Controller")
 	//获取参数
-	var param dto.IDParam2
+	var param admin_dto.IDParam2
 	if err := ctx.ShouldBindJSON(&param); err != nil {
 		logger.Errorc(ctx, "[%s] bind param fail,err=%+v", "method", err)
 		util.FailJson(ctx, cerror.InvalidParams)

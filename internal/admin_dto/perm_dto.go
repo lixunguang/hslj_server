@@ -1,4 +1,4 @@
-package dto
+package admin_dto
 
 type AdminLoginParam struct {
 	Password  string `json:"password" binding:"required"`

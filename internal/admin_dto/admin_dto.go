@@ -1,4 +1,4 @@
-package dto
+package admin_dto
 
 type Admin struct {
 	Name     string `json:"name" binding:"required"`

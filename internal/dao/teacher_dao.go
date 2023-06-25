@@ -3,7 +3,6 @@ package dao
 import (
 	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/common"
-	"edu-imp/internal/dto"
 	"edu-imp/internal/model/mysql"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
@@ -64,12 +63,12 @@ func GetTeacherByName(ctx *gin.Context, name string) ([]Admin, cerror.Cerror) {
 }
 
 //这个函数需要重构，因为名字可能重复，目前假设名字唯一
-func AddTeacher(ctx *gin.Context, teacher Teacher) (dto.AdminRes, cerror.Cerror) {
+func AddTeacher(ctx *gin.Context, teacher Teacher) (admin_dto.AdminRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	result := mysqlDB.Create(&teacher)
 
-	var res dto.AdminRes
+	var res admin_dto.AdminRes
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)

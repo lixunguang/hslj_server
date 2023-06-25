@@ -1,4 +1,4 @@
-package dto
+package admin_dto
 
 type User struct {
 	LoginID        string `json:"login_id"`

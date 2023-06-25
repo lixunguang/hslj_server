@@ -3,12 +3,11 @@ package admin_service
 import (
 	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
 	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
 )
 
-func AddTeacher(ctx *gin.Context, param admin_dto.AddTeacherParam) (dto.AdminRes, cerror.Cerror) {
+func AddTeacher(ctx *gin.Context, param admin_dto.AddTeacherParam) (admin_dto.AdminRes, cerror.Cerror) {
 
 	adminArray, _ := dao.GetTeacherByName(ctx, param.Name)
 
@@ -23,7 +22,7 @@ func AddTeacher(ctx *gin.Context, param admin_dto.AddTeacherParam) (dto.AdminRes
 		return dao.AddTeacher(ctx, teacher)
 	}
 
-	var res dto.AdminRes
+	var res admin_dto.AdminRes
 	return res, cerror.ErrorUserExist
 }
 
