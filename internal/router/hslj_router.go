@@ -13,7 +13,7 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/perm/login", controller.AdminLogin)
 	g.POST("/copyright", controller.Copyright)
 	//if !util.IsDebug() {
-	g.Use(controller.CheckAdminAuth) //middleware
+	//g.Use(controller.CheckAdminAuth) //middleware
 	//}
 
 	g.POST("/perm/logout", controller.AdminLogout)
@@ -29,5 +29,7 @@ func hsljRouter(e *gin.Engine) {
 	// 管理员 增加 删除 查找
 	g.POST("/administrator/add", controller.AddAdmin)
 	g.POST("/administrator/del", controller.DelAdmin)
+
+	g.POST("/GetLocation", controller.GetLocation)
 
 }
