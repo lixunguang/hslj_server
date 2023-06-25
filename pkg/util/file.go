@@ -63,3 +63,18 @@ func RemoveAllFilesInDir(dirPath string) (bool, error) {
 
 	return true, nil
 }
+
+func RemoveFile(filePaths []string) (bool, error) {
+	for _, filePath := range filePaths {
+		if !IsExist(filePath) {
+			return false, errors.New("文件路径错误")
+		}
+
+		if err := os.Remove(filePath); err != nil {
+			fmt.Println("error,removefile, filePath:", filePath)
+			return false, err
+		}
+	}
+
+	return true, nil
+}

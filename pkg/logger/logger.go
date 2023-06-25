@@ -2,10 +2,10 @@ package logger
 
 import (
 	"context"
+	"edu-imp/config"
+	"edu-imp/pkg/util"
 	"fmt"
 	"log"
-	"lxg_jz/config"
-	"lxg_jz/pkg/util"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -362,6 +362,17 @@ func Infof(format string, v ...interface{}) {
 }
 
 func Infoc(ctx context.Context, format string, v ...interface{}) {
+	str := fmt.Sprintf(fmt.Sprintf("[trace_id=%v] %s", GetTraceId(ctx), format), v...)
+	if len(str) > 300 {
+		str = str[:300] + "..."
+	}
+	err := _fileLogWriter.Log(LevelInfo).Output(LevelInfo, str)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "write Infoc log to file fail, err: %s", err.Error())
+	}
+}
+
+func Infoc_(ctx context.Context, format string, v ...interface{}) {
 	err := _fileLogWriter.Log(LevelInfo).Output(LevelInfo, fmt.Sprintf(fmt.Sprintf("[trace_id=%v] %s", GetTraceId(ctx), format), v...))
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "write Infoc log to file fail, err: %s", err.Error())

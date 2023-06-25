@@ -1,8 +1,10 @@
 package config
 
 import (
+	"fmt"
 	"github.com/spf13/viper"
 	"os"
+	"path/filepath"
 )
 
 var Vipper *viper.Viper
@@ -13,15 +15,28 @@ func init() {
 
 func loadConfig() {
 	vp := viper.New()
-	vp.AddConfigPath("/app/config")
+
+	configFilePath := filepath.Join(GetExecDirectory(), "config")
+	vp.AddConfigPath(configFilePath)
 	//vp.AddConfigPath(getConfigDirPath()) //相对main.go 或 test文件的路径
-	vp.SetConfigName("config")
+	vp.SetConfigName("admin-config")
+
 	vp.SetConfigType("yaml")
 	err := vp.ReadInConfig()
 	if err != nil {
 		panic(err)
 	}
 	Vipper = vp
+}
+
+func GetExecDirectory() string {
+	file, e := os.Executable()
+	if e != nil {
+		fmt.Println("error: get Executable file path error")
+	}
+	path := filepath.Dir(file)
+
+	return path
 }
 
 func getConfigDirPath() string {

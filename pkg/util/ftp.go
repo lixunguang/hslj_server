@@ -1,8 +1,8 @@
 package util
 
 import (
+	"edu-imp/config"
 	"fmt"
-	"lxg_jz/config"
 )
 
 func GetFtpUser() string {

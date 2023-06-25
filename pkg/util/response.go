@@ -1,8 +1,8 @@
 package util
 
 import (
+	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
-	"lxg_jz/pkg/cerror"
 	"net/http"
 )
 
@@ -63,5 +63,21 @@ func FailJson(c *gin.Context, err cerror.Cerror) {
 	c.JSON(
 		HttpStatus,
 		NewFailHttpResponse(err),
+	)
+}
+
+func NewFailMessage(err cerror.Cerror, data interface{}) *HttpResponse {
+
+	return &HttpResponse{
+		Code:    err.Code(),
+		Data:    data,
+		Message: err.Error(),
+	}
+}
+
+func FailJsonData(c *gin.Context, err cerror.Cerror, data interface{}) {
+	c.JSON(
+		HttpStatus,
+		NewFailMessage(err, data),
 	)
 }
