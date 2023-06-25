@@ -17,8 +17,8 @@ COPY . /app/
 RUN ls
 
 RUN ls /app/config
-RUN ls /app/internal
-RUN ls /app/internal/dao
+#RUN ls /app/internal
+#RUN ls /app/internal/dao
 
 # 执行代码编译命令。操作系统参数为linux，编译后的二进制产物命名为main，并存放在当前目录下。
 RUN GOOS=linux go build -o main .
