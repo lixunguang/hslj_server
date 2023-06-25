@@ -50,9 +50,9 @@ COPY --from=builder /app/main  /app/
 RUN ls /app
 
 COPY --from=builder /app/bin/config/config.yaml  /app/config/
-COPY --from=builder /app/bin/dist  /app/dist
-COPY --from=builder /app/bin/resource  /app/resource
-COPY --from=builder /app/bin/uploads  /app/uploads
+#COPY --from=builder /app/bin/dist  /app/dist
+#COPY --from=builder /app/bin/resource  /app/resource
+#COPY --from=builder /app/bin/uploads  /app/uploads
 #COPY --from=builder /app/bin/dist/index.html  /app/dist/
 RUN ls /app/config
 
