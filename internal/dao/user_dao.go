@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/common"
+	"edu-imp/internal/dto"
 	"edu-imp/internal/model/mysql"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
@@ -44,7 +44,7 @@ func DelUser(ctx *gin.Context, login_id string) (string, cerror.Cerror) {
 }
 
 // 删除用户
-func UpdateUser(ctx *gin.Context, param admin_dto.User) (string, cerror.Cerror) {
+func UpdateUser(ctx *gin.Context, param dto.User) (string, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 	var user User
 	user.OrganizationID = param.OrganizationID
@@ -80,13 +80,13 @@ func AllUser(ctx *gin.Context) ([]User, cerror.Cerror) {
 	return users, nil
 }
 
-func GetUser(ctx *gin.Context, loginID string) (admin_dto.UserRes, cerror.Cerror) {
+func GetUser(ctx *gin.Context, loginID string) (dto.UserRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var user User
 	result := mysqlDB.Where("login_id = ? ", loginID).First(&user)
 
-	var userRes admin_dto.UserRes
+	var userRes dto.UserRes
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
 		return userRes, cerror.ErrorDataGet
@@ -99,13 +99,13 @@ func GetUser(ctx *gin.Context, loginID string) (admin_dto.UserRes, cerror.Cerror
 	return userRes, nil
 }
 
-func CreateUser(ctx *gin.Context, param admin_dto.User) (admin_dto.AddUserRes, cerror.Cerror) {
+func CreateUser(ctx *gin.Context, param dto.User) (dto.AddUserRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	user := User{LoginID: param.LoginID, Name: param.Name, Password: param.Password, OrganizationID: param.OrganizationID}
 	result := mysqlDB.Create(&user)
 
-	var res admin_dto.AddUserRes
+	var res dto.AddUserRes
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)

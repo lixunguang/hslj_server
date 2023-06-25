@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"edu-imp/internal/admin_dto"
 	"edu-imp/internal/common"
+	"edu-imp/internal/dto"
 	"edu-imp/internal/model/mysql"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
@@ -23,14 +23,14 @@ func (News) TableName() string {
 }
 
 // 增加新闻
-func AddNews(ctx *gin.Context, news News) (admin_dto.UpdateNewsRes, cerror.Cerror) {
+func AddNews(ctx *gin.Context, news News) (dto.UpdateNewsRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	// add
 
 	result := mysqlDB.Create(&news)
 
-	var res admin_dto.UpdateNewsRes
+	var res dto.UpdateNewsRes
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
 		return res, cerror.NewCerror(common.Failed, result.Error.Error())
@@ -116,7 +116,7 @@ func GetTitleNews(ctx *gin.Context, number int) []dto.NewsItemRes {
 	return newsItems
 }
 */
-func GetPictureNews(ctx *gin.Context, number int) []admin_dto.PicNews {
+func GetPictureNews(ctx *gin.Context, number int) []dto.PicNews {
 	// 图片新闻
 	mysqlDB := mysql.GetDB()
 
@@ -127,9 +127,9 @@ func GetPictureNews(ctx *gin.Context, number int) []admin_dto.PicNews {
 		return nil
 	}
 
-	var dtoPicNews []admin_dto.PicNews
+	var dtoPicNews []dto.PicNews
 	for _, val := range picNews {
-		var item admin_dto.PicNews
+		var item dto.PicNews
 		item.NewsID = val.ID
 		item.Title = val.Title
 		item.Date = val.UpdatedAt.Format(util.FormatDate)
@@ -141,7 +141,7 @@ func GetPictureNews(ctx *gin.Context, number int) []admin_dto.PicNews {
 	return dtoPicNews
 }
 
-func GetTitleNews(ctx *gin.Context, number int) []admin_dto.TitleNews {
+func GetTitleNews(ctx *gin.Context, number int) []dto.TitleNews {
 	// 图片新闻
 	mysqlDB := mysql.GetDB()
 
@@ -152,9 +152,9 @@ func GetTitleNews(ctx *gin.Context, number int) []admin_dto.TitleNews {
 		return nil
 	}
 
-	var titleNewsRes []admin_dto.TitleNews
+	var titleNewsRes []dto.TitleNews
 	for _, val := range titleNews {
-		var item admin_dto.TitleNews
+		var item dto.TitleNews
 		item.NewsID = val.ID
 		item.Title = val.Title
 		item.Date = val.UpdatedAt.Format(util.FormatDate)
@@ -166,10 +166,10 @@ func GetTitleNews(ctx *gin.Context, number int) []admin_dto.TitleNews {
 }
 
 // 获取一条新闻详情
-func GetNewsById(ctx *gin.Context, id admin_dto.IDParam) (admin_dto.NewsResObj, cerror.Cerror) {
+func GetNewsById(ctx *gin.Context, id dto.IDParam) (dto.NewsResObj, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
-	var news admin_dto.NewsResObj
+	var news dto.NewsResObj
 
 	res := News{}
 	result := mysqlDB.Where("id = ? ", id.ID).First(&res)
@@ -188,7 +188,7 @@ func GetNewsById(ctx *gin.Context, id admin_dto.IDParam) (admin_dto.NewsResObj, 
 	return news, nil
 }
 
-func GetNewsDetailById(ctx *gin.Context, id admin_dto.IDParam) (News, cerror.Cerror) {
+func GetNewsDetailById(ctx *gin.Context, id dto.IDParam) (News, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	res := News{}
@@ -218,7 +218,7 @@ func GetNewsCount(ctx *gin.Context) (int64, cerror.Cerror) {
 }
 
 // 获取分页数据
-func GetNewsPagedData(ctx *gin.Context, param admin_dto.NewsAllParam) ([]News, cerror.Cerror) {
+func GetNewsPagedData(ctx *gin.Context, param dto.NewsAllParam) ([]News, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	// pageSize := fmt.Sprintf("%d", config.Vipper.Get("News.PageSize"))
