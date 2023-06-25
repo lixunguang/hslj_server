@@ -19,7 +19,7 @@ func loadConfig() {
 	configFilePath := filepath.Join(GetExecDirectory(), "config")
 	vp.AddConfigPath(configFilePath)
 	//vp.AddConfigPath(getConfigDirPath()) //相对main.go 或 test文件的路径
-	vp.SetConfigName("admin-config")
+	vp.SetConfigName("config")
 
 	vp.SetConfigType("yaml")
 	err := vp.ReadInConfig()
