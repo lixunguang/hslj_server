@@ -2,8 +2,6 @@ package service
 
 import (
 	"edu-imp/internal/common"
-	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
 	"edu-imp/pkg/cerror"
 	"edu-imp/pkg/logger"
 	"edu-imp/pkg/util"
@@ -82,40 +80,6 @@ type FileItem struct {
 	Url     string `json:"url"`
 	ID      int    `json:"id"`
 	FullUrl string `json:"full_url"`
-}
-
-func UploadFiles(ctx *gin.Context) ([]FileItem, cerror.Cerror) {
-
-	var res []FileItem
-
-	//step1:上传文件,得到新文件名字
-	upLoadRes, _ := UploadMultiFiles(ctx)
-
-	for key, value := range upLoadRes {
-
-		//step2:记录到资源数据库，title（原始名字），desc（"作业文件"），type（设置为0），content（文件路径，包括文件名）
-		var resourceParam dto.Resource
-		resourceParam.Title = key
-		resourceParam.Desc = "default val"
-		resourceParam.Content = value
-		resourceParam.Type = 0
-
-		id, err := dao.AddResource(ctx, resourceParam)
-		if err != nil {
-			return res, err
-		}
-
-		var fileItem FileItem
-		fileItem.ID = id
-		fileItem.Url = key
-		fileItem.FullUrl = common.GetCDNAddr() + value
-		res = append(res, fileItem)
-
-		//res[value] = id
-	}
-
-	fmt.Println("service UploadFiles return: ", res)
-	return res, nil
 }
 
 //上传多个文件接口

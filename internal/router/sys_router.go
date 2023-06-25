@@ -9,23 +9,16 @@ import (
 func sysRouter(e *gin.Engine) {
 	g := e.Group("")
 	g.GET("/hello", hello)
-	g.POST("/edu/v1/sys/copyright", Copyright)
+	g.POST("/sys/copyright", Copyright)
 }
 
 func hello(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "hello,yundao edu 2023")
+	ctx.JSON(http.StatusOK, "hello,华山论毽 2023")
 }
 
 func Copyright(ctx *gin.Context) {
 	var copyright string
-	copyright = "<pre><span style=\"color: #ced4d9; font-size: 12pt;\">Copyright 2014 - 2023 IBE edu. All Rights Reserved</span></pre>"
-
-	util.SuccessJson(ctx, copyright)
-}
-
-func About(ctx *gin.Context) {
-	var copyright string
-	copyright = "<pre><span style=\"color: #ced4d9; font-size: 12pt;\">Copyright 2014 - 2023 IBE edu. All Rights Reserved</span></pre>"
+	copyright = "<pre><span style=\"color: #ced4d9; font-size: 12pt;\">Copyright 华山论毽. All Rights Reserved</span></pre>"
 
 	util.SuccessJson(ctx, copyright)
 }

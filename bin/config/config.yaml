@@ -1,6 +1,6 @@
 Server:
   RunMode: debug
-  HttpPort: 8053
+  HttpPort: 8010
 Database:
   UserName: root
   Password: "ibe" #"Gotohell@1" #0925

@@ -135,8 +135,6 @@ func GetPictureNews(ctx *gin.Context, number int) []dto.PicNews {
 		item.Date = val.UpdatedAt.Format(util.FormatDate)
 		item.Author = val.Publisher
 
-		item.PictureUrl = GetResourceContentFromID(ctx, val.PictureID)
-
 		dtoPicNews = append(dtoPicNews, item)
 	}
 
@@ -185,7 +183,7 @@ func GetNewsById(ctx *gin.Context, id dto.IDParam) (dto.NewsResObj, cerror.Cerro
 	news.Author = res.Publisher
 	news.DateStr = res.UpdatedAt.Format(util.FormatDate)
 	news.Content = res.Content
-	news.PictureUrl = GetResourceContentFromID(ctx, res.PictureID)
+	//news.PictureUrl = GetResourceContentFromID(ctx, res.PictureID)
 
 	return news, nil
 }
