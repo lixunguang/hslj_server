@@ -4,9 +4,9 @@ Server:
 Database:
   UserName: root
   Password: "ibe" #"Gotohell@1" #0925
-  Host: 172.30.100.23 #127.0.0.1
+  Host: 10.30.104.251 #127.0.0.1 :3306
   Port: "3306"
-  DBName: ibe_edu
+  DBName: HSLJ_DB
   Charset: utf8
   ParseTime: True
   Timeout: 10s
