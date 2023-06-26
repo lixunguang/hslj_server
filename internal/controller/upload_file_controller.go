@@ -1,10 +1,10 @@
 package controller
 
 import (
-	"edu-imp/internal/service"
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/util"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/service"
+	"hslj/pkg/logger"
+	"hslj/pkg/util"
 )
 
 //上传文件，资源id

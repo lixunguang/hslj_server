@@ -1,10 +1,10 @@
 package service
 
 import (
-	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
-	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/dao"
+	"hslj/internal/dto"
+	"hslj/pkg/cerror"
 )
 
 func AddAdmin(ctx *gin.Context, param dto.Admin) (dto.AdminRes, cerror.Cerror) {

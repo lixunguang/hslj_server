@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"edu-imp/pkg/util"
 	"github.com/gin-gonic/gin"
+	"hslj/pkg/util"
 )
 
 type LocationRes struct {

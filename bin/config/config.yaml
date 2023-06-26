@@ -1,6 +1,6 @@
 Server:
   RunMode: debug
-  HttpPort: 80
+  HttpPort: 8040
 Database:
   UserName: lixunguang
   Password: "Gotohell@1" #"Gotohell@1" #0925

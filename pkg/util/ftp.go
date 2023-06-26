@@ -1,8 +1,8 @@
 package util
 
 import (
-	"edu-imp/config"
 	"fmt"
+	"hslj/config"
 )
 
 func GetFtpUser() string {

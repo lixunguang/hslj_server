@@ -1,13 +1,13 @@
 package main
 
 import (
-	"edu-imp/config"
-	"edu-imp/internal/middleware"
-	"edu-imp/internal/model/mysql"
-	router2 "edu-imp/internal/router"
-	"edu-imp/pkg/util"
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"hslj/config"
+	"hslj/internal/middleware"
+	"hslj/internal/model/mysql"
+	router2 "hslj/internal/router"
+	"hslj/pkg/util"
 	"io/ioutil"
 	"strings"
 )

@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"edu-imp/internal/model/mysql"
+	"hslj/internal/model/mysql"
 	"os"
 	"testing"
 )

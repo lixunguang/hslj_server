@@ -1,10 +1,10 @@
 package middleware
 
 import (
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/request"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"hslj/pkg/logger"
+	"hslj/pkg/request"
 )
 
 // 添加trace-id, 如果父亲有则 [父亲-儿子]

@@ -1,9 +1,9 @@
 package util
 
 import (
-	"edu-imp/config"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"hslj/config"
 )
 
 func GetRunPort() string {

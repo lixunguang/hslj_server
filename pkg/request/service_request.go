@@ -3,9 +3,9 @@ package request
 import (
 	"bytes"
 	"context"
-	"edu-imp/pkg/logger"
 	"errors"
 	"fmt"
+	"hslj/pkg/logger"
 	"io"
 	"io/ioutil"
 	"net/http"

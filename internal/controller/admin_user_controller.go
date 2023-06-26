@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"edu-imp/internal/dto"
-	"edu-imp/internal/service"
-	"edu-imp/pkg/cerror"
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/util"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/dto"
+	"hslj/internal/service"
+	"hslj/pkg/cerror"
+	"hslj/pkg/logger"
+	"hslj/pkg/util"
 )
 
 func AddUser(ctx *gin.Context) {

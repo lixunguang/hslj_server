@@ -2,8 +2,8 @@
 package common
 
 import (
-	"edu-imp/config"
 	"fmt"
+	"hslj/config"
 )
 
 var SigKey = []byte("signature_hmac_secret_shared_key")

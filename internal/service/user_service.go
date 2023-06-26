@@ -1,10 +1,10 @@
 package service
 
 import (
-	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
-	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/dao"
+	"hslj/internal/dto"
+	"hslj/pkg/cerror"
 )
 
 // 增加用户

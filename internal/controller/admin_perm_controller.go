@@ -1,16 +1,16 @@
 package controller
 
 import (
-	"edu-imp/internal/common"
-	"edu-imp/internal/dto"
-	"edu-imp/internal/middleware"
-	"edu-imp/internal/service"
-	"edu-imp/pkg/cerror"
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/util"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
+	"hslj/internal/common"
+	"hslj/internal/dto"
+	"hslj/internal/middleware"
+	"hslj/internal/service"
+	"hslj/pkg/cerror"
+	"hslj/pkg/logger"
+	"hslj/pkg/util"
 )
 
 // 权限相关接口

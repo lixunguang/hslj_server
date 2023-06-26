@@ -1,11 +1,11 @@
 package dao
 
 import (
-	"edu-imp/internal/dto"
-	"edu-imp/internal/model/mysql"
-	"edu-imp/pkg/cerror"
-	"edu-imp/pkg/logger"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/dto"
+	"hslj/internal/model/mysql"
+	"hslj/pkg/cerror"
+	"hslj/pkg/logger"
 )
 
 type Admin struct {

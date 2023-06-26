@@ -1,8 +1,8 @@
 package util
 
 import (
-	"edu-imp/pkg/cerror"
 	"github.com/gin-gonic/gin"
+	"hslj/pkg/cerror"
 	"net/http"
 )
 

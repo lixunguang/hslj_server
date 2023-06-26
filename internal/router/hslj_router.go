@@ -1,8 +1,8 @@
 package router
 
 import (
-	"edu-imp/internal/controller"
 	"github.com/gin-gonic/gin"
+	"hslj/internal/controller"
 )
 
 //教育管理平台后台接口

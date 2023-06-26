@@ -1,12 +1,12 @@
 package mysql
 
 import (
-	"edu-imp/config"
-	"edu-imp/pkg/util"
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"hslj/config"
+	"hslj/pkg/util"
 	"runtime"
 )
 

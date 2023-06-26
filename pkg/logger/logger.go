@@ -2,9 +2,9 @@ package logger
 
 import (
 	"context"
-	"edu-imp/config"
-	"edu-imp/pkg/util"
 	"fmt"
+	"hslj/config"
+	"hslj/pkg/util"
 	"log"
 	"os"
 	"path/filepath"

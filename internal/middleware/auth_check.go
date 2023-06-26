@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"edu-imp/pkg/cerror"
 	"fmt"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/golang-jwt/jwt"
+	"hslj/pkg/cerror"
 	"time"
 )
 
