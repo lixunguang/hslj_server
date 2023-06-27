@@ -51,7 +51,9 @@ func main() {
 	})
 
 	//增加访问日志、traceId
+
 	r.Use(middleware.AccessLogMiddleware, middleware.AddTraceId)
+	r.Use(middleware.Cors())
 	//加载路由
 	router2.Router(r)
 
