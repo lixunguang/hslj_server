@@ -19,7 +19,7 @@ func GetLocationList(ctx *gin.Context) {
 		return
 	}
 	if util.IsDebug() {
-		logger.Infoc(ctx, "[%s] input param: %+v", "Login Controller", param)
+		logger.Infoc(ctx, "[%s] input param: %+v", "GetLocationList Controller", param)
 	}
 
 	//参数校验
@@ -66,7 +66,7 @@ func AddLocation(ctx *gin.Context) {
 		return
 	}
 	if util.IsDebug() {
-		logger.Infoc(ctx, "[%s] input param: %+v", "Login Controller", param)
+		logger.Infoc(ctx, "[%s] input param: %+v", "AddLocation Controller", param)
 	}
 	//参数校验
 
