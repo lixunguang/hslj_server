@@ -17,7 +17,7 @@ type LocationRes struct {
 
 }
 
-func GetLocation(ctx *gin.Context) {
+func GetLocationList(ctx *gin.Context) {
 	var res []LocationRes
 
 	var item LocationRes
@@ -36,6 +36,13 @@ func GetLocation(ctx *gin.Context) {
 	item.Longitude = 4.4444
 	item.Rating = 4
 	res = append(res, item)
+
+	util.SuccessJson(ctx, res)
+}
+
+func AddLocation(ctx *gin.Context) {
+
+	res := "addok!"
 
 	util.SuccessJson(ctx, res)
 }

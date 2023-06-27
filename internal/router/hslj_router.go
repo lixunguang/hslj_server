@@ -30,6 +30,7 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/administrator/add", controller.AddAdmin)
 	g.POST("/administrator/del", controller.DelAdmin)
 
-	g.POST("/GetLocation", controller.GetLocation)
-
+	//地点
+	g.POST("/location/list", controller.GetLocationList)
+	g.POST("/location/add", controller.AddLocation)
 }
