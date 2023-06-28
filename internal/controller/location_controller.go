@@ -3,6 +3,7 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"hslj/internal/dto"
+	"hslj/internal/service"
 	"hslj/pkg/cerror"
 	"hslj/pkg/logger"
 	"hslj/pkg/util"
@@ -26,26 +27,8 @@ func GetLocationList(ctx *gin.Context) {
 
 	//调用service
 
-	var res []dto.GetLocationListRes
+	res, err := service.GetLocation(ctx, param)
 
-	var item dto.GetLocationListRes
-	item.Name = "北京颐和园"
-	item.Desc = "颐和园描述。。。"
-	item.Latitude = 1.11
-	item.Longitude = 2.22
-	item.Rating = 4
-	//item.OpenTime =
-
-	res = append(res, item)
-
-	item.Name = "北京天坛"
-	item.Desc = "天坛描述。。。"
-	item.Latitude = 3.3333
-	item.Longitude = 4.4444
-	item.Rating = 4
-	res = append(res, item)
-
-	var err cerror.Cerror = nil
 	//结果返回
 	if err == nil {
 		util.SuccessJson(ctx, res)
