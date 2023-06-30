@@ -50,7 +50,7 @@ func DelNews(ctx *gin.Context, id int) (int, cerror.Cerror) {
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
-		return id, cerror.NewCerror(common.FailedID, result.Error.Error())
+		return id, cerror.NewCerror(common.InvalidID, result.Error.Error())
 	}
 
 	return id, nil
@@ -85,7 +85,7 @@ func UpdateNews(ctx *gin.Context, news News) (News, cerror.Cerror) {
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
-		return news, cerror.NewCerror(common.FailedID, result.Error.Error())
+		return news, cerror.NewCerror(common.InvalidID, result.Error.Error())
 	}
 
 	return news, nil

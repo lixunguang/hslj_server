@@ -19,6 +19,13 @@ type GetLocationListRes struct {
 type AddLocationParam struct {
 	Name string `json:"name"`
 	Desc string `json:"desc"`
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Frequency int `json:"frequency"`//频率1,2,3,4,5,6,7
+	PeopleNum int `json:"people_num"`//参与人数 1代表0-10人 2 代表10~20人
+	TimeStr string `json:"time_str"`
+	ISAuth int `json:"is_auth"`
+	Rating int `json:"rating"`
 }
 
 type AddLocationRes struct {

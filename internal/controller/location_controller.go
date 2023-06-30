@@ -54,9 +54,10 @@ func AddLocation(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	var res dto.AddLocationRes
+	param.Rating = 4
+	param.ISAuth = 0
 
-	var err cerror.Cerror = nil
+	res, err := service.AddLocation(ctx, param)
 
 	//结果返回
 	if err == nil {

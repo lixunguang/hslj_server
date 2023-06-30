@@ -100,8 +100,11 @@ CREATE TABLE `location`
     `name`       varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '地点名字',
     `desc`       text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci         NULL COMMENT '地点描述',
     `location`   geometry                                                      NULL COMMENT '位置',
-    `Rating`     int(11)                                                       NOT NULL DEFAULT 0 COMMENT '创建人id',
-
+    `frequency`  int(11)                                                       NOT NULL DEFAULT 0 COMMENT '频率',
+    `time_str`    text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci         NULL COMMENT '时间信息',
+    `people_num`  int(11)                                                       NOT NULL DEFAULT 0 COMMENT '参与人数',
+    `rating`     int(11)                                                       NOT NULL DEFAULT 0 COMMENT '评分',
+    `is_auth`    tinyint                                                       NOT NULL DEFAULT 0 COMMENT '是否已经验证0 未验证，1 已经验证',
     `created_at` timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
     `updated_at` timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
@@ -115,19 +118,20 @@ CREATE TABLE `location`
 -- Records of location
 -- ----------------------------
 INSERT INTO `location`
-VALUES (1, '北京颐和园北宫门', '颐和园是一个皇家园林。',  ST_GeomFromText('POINT(121.474103 31.232862)'), '0',  '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+VALUES (1, '北京颐和园北宫门', '颐和园是一个皇家园林。', ST_GeomFromText('POINT(121.474103 31.232862)'),1,"08:00~9:00;3:00~5:00",2, '0', '0', '2023-03-09 16:53:08',
+        '2023-04-17 10:29:32');
 INSERT INTO `location`
-VALUES (2, '北京天坛', '天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公顷。',  ST_GeomFromText('POINT(121.474103 31.232862)'), '0',  '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+VALUES (2, '北京天坛', '天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公顷。', ST_GeomFromText('POINT(121.474103 31.232862)'),1,"08:00~9:00;3:00~5:00",2, '0', '0',
+        '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 INSERT INTO `location`
-VALUES (3, '北京玉渊潭公园', '元代,丁氏在池边建亭,以“玉渊”名其亭,于是有了玉渊潭之名。当时,这里已是有名的风景区。',  ST_GeomFromText('POINT(121.474103 31.232862)'), '0',  '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+VALUES (3, '北京玉渊潭公园', '元代,丁氏在池边建亭,以“玉渊”名其亭,于是有了玉渊潭之名。当时,这里已是有名的风景区。', ST_GeomFromText('POINT(121.474103 31.232862)'),1,"08:00~9:00;3:00~5:00",2,
+        '0', '0', '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 INSERT INTO `location`
-VALUES (4, '北京望京北小河', '望京北小河。',  ST_GeomFromText('POINT(121.474103 31.232862)'), '0',  '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+VALUES (4, '北京望京北小河', '望京北小河。', ST_GeomFromText('POINT(121.474103 31.232862)'),1,"08:00~9:00;3:00~5:00",2, '0', '0', '2023-03-09 16:53:08',
+        '2023-04-17 10:29:32');
 INSERT INTO `location`
-VALUES (5, '北京地坛', '原名方泽坛，为明清两代皇帝祭祀皇地祗的场所。',  ST_GeomFromText('POINT(121.474103 31.232862)'), '0',  '2023-03-09 16:53:08', '2023-04-17 10:29:32');
-
-
-
-
+VALUES (5, '北京地坛', '原名方泽坛，为明清两代皇帝祭祀皇地祗的场所。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1,"08:00~9:00;3:00~5:00",2,'0', '0',
+        '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 
 
 

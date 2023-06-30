@@ -14,7 +14,7 @@ const (
 )
 
 const (
-	FailedID = -1 //-1为不合法的id，一般为插入失败,最初为0  //todo：重构
+	InvalidID = -1 //-1为不合法的id，一般为插入失败,最初为0  //todo：重构
 )
 
 //错误处理

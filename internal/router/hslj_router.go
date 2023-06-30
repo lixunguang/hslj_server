@@ -7,7 +7,7 @@ import (
 
 //教育管理平台后台接口
 func hsljRouter(e *gin.Engine) {
-	g := e.Group("/admin")
+	g := e.Group("/v1")
 
 	//权限 perm
 	g.POST("/perm/login", controller.AdminLogin)
@@ -31,6 +31,6 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/administrator/del", controller.DelAdmin)
 
 	//地点
-	g.POST("/location/list", controller.GetLocationList)
+	g.POST("/location/get", controller.GetLocationList)
 	g.POST("/location/add", controller.AddLocation)
 }

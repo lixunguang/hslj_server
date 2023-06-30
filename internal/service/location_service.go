@@ -26,3 +26,10 @@ func GetLocation(ctx *gin.Context, param dto.GetLocationListParam) ([]dto.GetLoc
 
 	return res, err
 }
+
+func AddLocation(ctx *gin.Context, param dto.AddLocationParam) (int, cerror.Cerror) {
+
+	id, err := dao.AddLocation(ctx, param)
+
+	return id, err
+}

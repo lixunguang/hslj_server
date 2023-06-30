@@ -33,7 +33,7 @@ func DelUser(ctx *gin.Context, login_id string) (string, cerror.Cerror) {
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
-		return login_id, cerror.NewCerror(common.FailedID, result.Error.Error())
+		return login_id, cerror.NewCerror(common.InvalidID, result.Error.Error())
 	}
 
 	if result.RowsAffected == 0 {
@@ -145,7 +145,7 @@ func GetLoginIDByID(ctx *gin.Context, userID int) (int, cerror.Cerror) {
 	result := mysqlDB.First(&user)
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v, ", result.Error)
-		return id, cerror.NewCerror(common.FailedID, result.Error.Error())
+		return id, cerror.NewCerror(common.InvalidID, result.Error.Error())
 	}
 
 	return id, nil
@@ -160,7 +160,7 @@ func GetIDByLoginID(ctx *gin.Context, loginID string) (int, cerror.Cerror) {
 	result := mysqlDB.Where("login_id=?", loginID).First(&user)
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v, ", result.Error)
-		return id, cerror.NewCerror(common.FailedID, result.Error.Error())
+		return id, cerror.NewCerror(common.InvalidID, result.Error.Error())
 	}
 
 	id = user.ID
