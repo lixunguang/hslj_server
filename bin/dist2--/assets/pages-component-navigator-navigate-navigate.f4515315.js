@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as e,w as s,i as l,a as n,r as i,d as r,e as d}from"./index-886f4693.js";const o=a({data:()=>({title:"新建的页面"})},[["render",function(a,o,u,c,f,p){const m=i(d("page-head"),r),x=l;return t(),e(x,null,{default:s((()=>[n(m,{title:f.title},null,8,["title"])])),_:1})}]]);export{o as default};
