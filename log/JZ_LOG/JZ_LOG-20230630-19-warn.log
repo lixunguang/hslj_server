@@ -1,0 +1,5 @@
+2023/06/30 19:15:42 location_dao.go:59: [33m[WARN][0m [trace_id=1688123742399033700] [userDao.CheckUser] fail 2,err=Error 1416 (22003): Cannot get geometry object from data you send to the GEOMETRY field
+2023/06/30 19:20:09 location_dao.go:59: [33m[WARN][0m [trace_id=1688123961135347000] [userDao.CheckUser] fail 2,err=Error 1416 (22003): Cannot get geometry object from data you send to the GEOMETRY field
+2023/06/30 19:20:33 location_dao.go:59: [33m[WARN][0m [trace_id=1688124016384180300] [userDao.CheckUser] fail 2,err=Error 1416 (22003): Cannot get geometry object from data you send to the GEOMETRY field
+2023/06/30 19:24:25 location_dao.go:59: [33m[WARN][0m [trace_id=1688124258205490700] [userDao.CheckUser] fail 2,err=Error 1416 (22003): Cannot get geometry object from data you send to the GEOMETRY field
+2023/06/30 19:42:00 location_dao.go:59: [33m[WARN][0m [trace_id=1688125301236595800] [userDao.CheckUser] fail 2,err=Error 1416 (22003): Cannot get geometry object from data you send to the GEOMETRY field

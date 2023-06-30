@@ -1,0 +1,3 @@
+2023/06/30 21:09:43 location_controller.go:43: [32m[INFO][0m [trace_id=1688130583331142900] [AddLocation Controller] start***
+2023/06/30 21:09:43 location_controller.go:52: [32m[INFO][0m [trace_id=1688130583331142900] [AddLocation Controller] input param: {Name:xxxxxx Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 21:09:43 location_controller.go:69: [32m[INFO][0m [trace_id=1688130583331142900] [AddLocation Controller] end***  result:  res=0,token =tokenStr

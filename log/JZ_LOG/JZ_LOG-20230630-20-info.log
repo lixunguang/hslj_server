@@ -1,0 +1,25 @@
+2023/06/30 20:28:22 location_controller.go:43: [32m[INFO][0m [trace_id=1688128096264076400] [AddLocation Controller] start***
+2023/06/30 20:28:27 location_controller.go:52: [32m[INFO][0m [trace_id=1688128096264076400] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:28:39 location_controller.go:69: [32m[INFO][0m [trace_id=1688128096264076400] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:34:38 location_controller.go:43: [32m[INFO][0m [trace_id=1688128475267396400] [AddLocation Controller] start***
+2023/06/30 20:34:39 location_controller.go:52: [32m[INFO][0m [trace_id=1688128475267396400] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:34:40 location_controller.go:69: [32m[INFO][0m [trace_id=1688128475267396400] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:48:50 location_controller.go:43: [32m[INFO][0m [trace_id=1688129327548085000] [AddLocation Controller] start***
+2023/06/30 20:48:52 location_controller.go:52: [32m[INFO][0m [trace_id=1688129327548085000] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:48:59 location_controller.go:69: [32m[INFO][0m [trace_id=1688129327548085000] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:49:29 location_controller.go:43: [32m[INFO][0m [trace_id=1688129367668822300] [AddLocation Controller] start***
+2023/06/30 20:49:30 location_controller.go:52: [32m[INFO][0m [trace_id=1688129367668822300] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:51:47 location_controller.go:43: [32m[INFO][0m [trace_id=1688129505231475700] [AddLocation Controller] start***
+2023/06/30 20:51:47 location_controller.go:52: [32m[INFO][0m [trace_id=1688129505231475700] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:53:51 location_controller.go:43: [32m[INFO][0m [trace_id=1688129629013016600] [AddLocation Controller] start***
+2023/06/30 20:53:51 location_controller.go:52: [32m[INFO][0m [trace_id=1688129629013016600] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:54:29 location_controller.go:69: [32m[INFO][0m [trace_id=1688129629013016600] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:55:07 location_controller.go:43: [32m[INFO][0m [trace_id=1688129706080237900] [AddLocation Controller] start***
+2023/06/30 20:55:07 location_controller.go:52: [32m[INFO][0m [trace_id=1688129706080237900] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:55:48 location_controller.go:69: [32m[INFO][0m [trace_id=1688129706080237900] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:56:35 location_controller.go:43: [32m[INFO][0m [trace_id=1688129793974738700] [AddLocation Controller] start***
+2023/06/30 20:56:36 location_controller.go:52: [32m[INFO][0m [trace_id=1688129793974738700] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:56:38 location_controller.go:69: [32m[INFO][0m [trace_id=1688129793974738700] [AddLocation Controller] end***  result:  res=0,token =tokenStr
+2023/06/30 20:57:08 location_controller.go:43: [32m[INFO][0m [trace_id=1688129823918730500] [AddLocation Controller] start***
+2023/06/30 20:57:08 location_controller.go:52: [32m[INFO][0m [trace_id=1688129823918730500] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 20:57:09 location_controller.go:69: [32m[INFO][0m [trace_id=1688129823918730500] [AddLocation Controller] end***  result:  res=0,token =tokenStr

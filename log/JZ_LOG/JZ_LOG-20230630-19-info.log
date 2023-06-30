@@ -1,0 +1,34 @@
+2023/06/30 19:15:42 location_controller.go:43: [32m[INFO][0m [trace_id=1688123742399033700] [AddLocation Controller] start***
+2023/06/30 19:15:42 location_controller.go:52: [32m[INFO][0m [trace_id=1688123742399033700] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:15:42 location_controller.go:69: [32m[INFO][0m [trace_id=1688123742399033700] [AddLocation Controller] end***  result:  res=-1,token =tokenStr
+2023/06/30 19:16:53 location_controller.go:43: [32m[INFO][0m [trace_id=1688123784843197200] [AddLocation Controller] start***
+2023/06/30 19:16:53 location_controller.go:52: [32m[INFO][0m [trace_id=1688123784843197200] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:19:23 location_controller.go:43: [32m[INFO][0m [trace_id=1688123961135347000] [AddLocation Controller] start***
+2023/06/30 19:19:23 location_controller.go:52: [32m[INFO][0m [trace_id=1688123961135347000] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:20:09 location_controller.go:69: [32m[INFO][0m [trace_id=1688123961135347000] [AddLocation Controller] end***  result:  res=-1,token =tokenStr
+2023/06/30 19:20:18 location_controller.go:43: [32m[INFO][0m [trace_id=1688124016384180300] [AddLocation Controller] start***
+2023/06/30 19:20:18 location_controller.go:52: [32m[INFO][0m [trace_id=1688124016384180300] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:20:33 location_controller.go:69: [32m[INFO][0m [trace_id=1688124016384180300] [AddLocation Controller] end***  result:  res=-1,token =tokenStr
+2023/06/30 19:23:56 location_controller.go:13: [32m[INFO][0m [trace_id=1688124232828061800] [GetLocationList Controller] start***
+2023/06/30 19:23:56 location_controller.go:23: [32m[INFO][0m [trace_id=1688124232828061800] [GetLocationList Controller] input param: {LocationCode:96}
+2023/06/30 19:23:56 location_controller.go:39: [32m[INFO][0m [trace_id=1688124232828061800] [GetLocationList Controller] end***  result:  res=[{ID:1 Name:北京颐和园北宫门 Desc:颐和园是一个皇家园林。 Latitude:34 Longitude:12 Rating:0} {ID:2 Name:北京天坛 Desc:天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公�...
+2023/06/30 19:24:22 location_controller.go:43: [32m[INFO][0m [trace_id=1688124258205490700] [AddLocation Controller] start***
+2023/06/30 19:24:22 location_controller.go:52: [32m[INFO][0m [trace_id=1688124258205490700] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:24:25 location_controller.go:69: [32m[INFO][0m [trace_id=1688124258205490700] [AddLocation Controller] end***  result:  res=-1,token =tokenStr
+2023/06/30 19:25:38 location_controller.go:43: [32m[INFO][0m [trace_id=1688124334923446400] [AddLocation Controller] start***
+2023/06/30 19:25:38 location_controller.go:52: [32m[INFO][0m [trace_id=1688124334923446400] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:31:57 location_controller.go:13: [32m[INFO][0m [trace_id=1688124715057142400] [GetLocationList Controller] start***
+2023/06/30 19:31:57 location_controller.go:23: [32m[INFO][0m [trace_id=1688124715057142400] [GetLocationList Controller] input param: {LocationCode:96}
+2023/06/30 19:31:57 location_controller.go:39: [32m[INFO][0m [trace_id=1688124715057142400] [GetLocationList Controller] end***  result:  res=[{ID:1 Name:北京颐和园北宫门 Desc:颐和园是一个皇家园林。 Latitude:34 Longitude:12 Rating:0} {ID:2 Name:北京天坛 Desc:天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公�...
+2023/06/30 19:41:35 location_controller.go:13: [32m[INFO][0m [trace_id=1688125292906246800] [GetLocationList Controller] start***
+2023/06/30 19:41:35 location_controller.go:23: [32m[INFO][0m [trace_id=1688125292906246800] [GetLocationList Controller] input param: {LocationCode:96}
+2023/06/30 19:41:35 location_controller.go:39: [32m[INFO][0m [trace_id=1688125292906246800] [GetLocationList Controller] end***  result:  res=[{ID:1 Name:北京颐和园北宫门 Desc:颐和园是一个皇家园林。 Latitude:34 Longitude:12 Rating:0} {ID:2 Name:北京天坛 Desc:天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公�...
+2023/06/30 19:41:42 location_controller.go:43: [32m[INFO][0m [trace_id=1688125301236595800] [AddLocation Controller] start***
+2023/06/30 19:41:42 location_controller.go:52: [32m[INFO][0m [trace_id=1688125301236595800] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:42:00 location_controller.go:69: [32m[INFO][0m [trace_id=1688125301236595800] [AddLocation Controller] end***  result:  res=-1,token =tokenStr
+2023/06/30 19:42:19 location_controller.go:43: [32m[INFO][0m [trace_id=1688125336640344300] [AddLocation Controller] start***
+2023/06/30 19:42:19 location_controller.go:52: [32m[INFO][0m [trace_id=1688125336640344300] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:44:04 location_controller.go:43: [32m[INFO][0m [trace_id=1688125388890720700] [AddLocation Controller] start***
+2023/06/30 19:44:08 location_controller.go:52: [32m[INFO][0m [trace_id=1688125388890720700] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
+2023/06/30 19:44:50 location_controller.go:43: [32m[INFO][0m [trace_id=1688125485818019500] [AddLocation Controller] start***
+2023/06/30 19:44:50 location_controller.go:52: [32m[INFO][0m [trace_id=1688125485818019500] [AddLocation Controller] input param: {Name:造日市照 Desc:Duis commodo laborum non Latitude:29 Longitude:61 Frequency:83 PeopleNum:37 TimeStr:1992-11-11 03:32:46 ISAuth:0 Rating:0}
