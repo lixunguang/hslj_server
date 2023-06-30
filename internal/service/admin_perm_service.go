@@ -1,11 +1,11 @@
 package service
 
 import (
-	"edu-imp/internal/common"
-	"edu-imp/internal/dao"
-	"edu-imp/internal/middleware"
-	"edu-imp/pkg/cerror"
-	"edu-imp/pkg/logger"
+	"hslj/internal/common"
+	"hslj/internal/dao"
+	"hslj/internal/middleware"
+	"hslj/pkg/cerror"
+	"hslj/pkg/logger"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"

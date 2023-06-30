@@ -1,10 +1,10 @@
 package service
 
 import (
-	"edu-imp/config"
-	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
-	"edu-imp/pkg/cerror"
+	"hslj/config"
+	"hslj/internal/dao"
+	"hslj/internal/dto"
+	"hslj/pkg/cerror"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"strconv"

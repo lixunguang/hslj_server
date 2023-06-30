@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"edu-imp/pkg/logger"
+	"hslj/pkg/logger"
 	"github.com/gin-gonic/gin"
 	"runtime"
 	"time"

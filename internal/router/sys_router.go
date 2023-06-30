@@ -1,7 +1,7 @@
 package router
 
 import (
-	"edu-imp/pkg/util"
+	"hslj/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

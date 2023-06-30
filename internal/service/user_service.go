@@ -1,9 +1,9 @@
 package service
 
 import (
-	"edu-imp/internal/dao"
-	"edu-imp/internal/dto"
-	"edu-imp/pkg/cerror"
+	"hslj/internal/dao"
+	"hslj/internal/dto"
+	"hslj/pkg/cerror"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,4 +1,4 @@
-module edu-imp
+module hslj
 
 go 1.16
 

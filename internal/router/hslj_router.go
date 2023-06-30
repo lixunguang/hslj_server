@@ -1,7 +1,7 @@
 package router
 
 import (
-	"edu-imp/internal/controller"
+	"hslj/internal/controller"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,10 +1,10 @@
 package service
 
 import (
-	"edu-imp/internal/common"
-	"edu-imp/pkg/cerror"
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/util"
+	"hslj/internal/common"
+	"hslj/pkg/cerror"
+	"hslj/pkg/logger"
+	"hslj/pkg/util"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"io"

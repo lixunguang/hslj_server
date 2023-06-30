@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	"edu-imp/pkg/logger"
-	"edu-imp/pkg/request"
+	"hslj/pkg/logger"
+	"hslj/pkg/request"
 	"fmt"
 	"github.com/gin-gonic/gin"
 )

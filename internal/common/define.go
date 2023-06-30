@@ -2,7 +2,7 @@
 package common
 
 import (
-	"edu-imp/config"
+	"hslj/config"
 	"fmt"
 )
 

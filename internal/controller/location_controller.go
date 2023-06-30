@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"edu-imp/pkg/util"
+	"hslj/pkg/util"
 	"github.com/gin-gonic/gin"
 )
 

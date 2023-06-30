@@ -3,7 +3,7 @@ package request
 import (
 	"bytes"
 	"context"
-	"edu-imp/pkg/logger"
+	"hslj/pkg/logger"
 	"errors"
 	"fmt"
 	"io"

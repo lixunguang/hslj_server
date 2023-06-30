@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"edu-imp/pkg/cerror"
+	"hslj/pkg/cerror"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"time"

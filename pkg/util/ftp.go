@@ -1,7 +1,7 @@
 package util
 
 import (
-	"edu-imp/config"
+	"hslj/config"
 	"fmt"
 )
 
