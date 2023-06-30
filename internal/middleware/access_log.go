@@ -1,8 +1,12 @@
 package middleware
 
 import (
+<<<<<<< HEAD
 	"hslj/pkg/logger"
+=======
+>>>>>>> 688a4df92fb5de6d3a3c38567476cf81c98e2521
 	"github.com/gin-gonic/gin"
+	"hslj/pkg/logger"
 	"runtime"
 	"time"
 )

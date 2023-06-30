@@ -1,6 +1,10 @@
 Server:
   RunMode: debug
+<<<<<<< HEAD
   HttpPort: 8040
+=======
+  HttpPort: 80 #微云，必须80？
+>>>>>>> 688a4df92fb5de6d3a3c38567476cf81c98e2521
 Database:
   UserName: lixunguang
   Password: "Gotohell@1" #"Gotohell@1" #0925

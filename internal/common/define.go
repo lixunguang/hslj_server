@@ -2,8 +2,12 @@
 package common
 
 import (
+<<<<<<< HEAD
 	"hslj/config"
+=======
+>>>>>>> 688a4df92fb5de6d3a3c38567476cf81c98e2521
 	"fmt"
+	"hslj/config"
 )
 
 var SigKey = []byte("signature_hmac_secret_shared_key")

@@ -1,8 +1,12 @@
 package router
 
 import (
+<<<<<<< HEAD
 	"hslj/internal/controller"
+=======
+>>>>>>> 688a4df92fb5de6d3a3c38567476cf81c98e2521
 	"github.com/gin-gonic/gin"
+	"hslj/internal/controller"
 )
 
 //教育管理平台后台接口
@@ -30,6 +34,7 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/administrator/add", controller.AddAdmin)
 	g.POST("/administrator/del", controller.DelAdmin)
 
-	g.POST("/GetLocation", controller.GetLocation)
-
+	//地点
+	g.POST("/location/list", controller.GetLocationList)
+	g.POST("/location/add", controller.AddLocation)
 }

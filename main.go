@@ -1,13 +1,21 @@
 package main
 
 import (
+<<<<<<< HEAD
 	"hslj/config"
 	"hslj/internal/middleware"
 	"hslj/internal/model/mysql"
 	router2 "hslj/internal/router"
 	"hslj/pkg/util"
+=======
+>>>>>>> 688a4df92fb5de6d3a3c38567476cf81c98e2521
 	"github.com/gin-contrib/static"
 	"github.com/gin-gonic/gin"
+	"hslj/config"
+	"hslj/internal/middleware"
+	"hslj/internal/model/mysql"
+	router2 "hslj/internal/router"
+	"hslj/pkg/util"
 	"io/ioutil"
 	"strings"
 )
@@ -51,7 +59,9 @@ func main() {
 	})
 
 	//增加访问日志、traceId
+
 	r.Use(middleware.AccessLogMiddleware, middleware.AddTraceId)
+	r.Use(middleware.Cors())
 	//加载路由
 	router2.Router(r)
 
