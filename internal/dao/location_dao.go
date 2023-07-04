@@ -21,6 +21,7 @@ type Location struct {
 	TimeStr   string        `gorm:"column:time_str"`   //举行时间
 	PeopleNum int           `gorm:"column:people_num"` //参与人数
 	Rating    int           `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等
+	Hot    int               `gorm:"column:hot"`  //热度，一段时间内参与的人数
 	IsAuth    int           `gorm:"column:is_auth"`
 }
 
@@ -34,6 +35,21 @@ func GetLocation(ctx *gin.Context, param dto.GetLocationListParam) ([]Location, 
 	var location []Location
 
 	result := mysqlDB.Find(&location)
+
+	if result.Error != nil {
+		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
+		return location, cerror.ErrorDataGet
+	}
+
+	return location, nil
+}
+
+func GetLocationHot(ctx *gin.Context) ([]Location, cerror.Cerror) {
+	mysqlDB := mysql.GetDB()
+
+	var location []Location
+
+	result := mysqlDB.Order("hot desc").Limit(5).Find(&location)
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)

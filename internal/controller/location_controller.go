@@ -69,3 +69,26 @@ func AddLocation(ctx *gin.Context) {
 
 	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "AddLocation Controller", res, "tokenStr")
 }
+
+
+func GetLocationHot(ctx *gin.Context) {
+	logger.Infoc(ctx, "[%s] start***", "GetLocationHot Controller")
+
+	// 获取参数
+
+
+	//参数校验
+
+	//调用service
+
+	res, err := service.GetLocationHot(ctx)
+
+	//结果返回
+	if err == nil {
+		util.SuccessJson(ctx, res)
+	} else {
+		util.FailJson(ctx, err)
+	}
+
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetLocationHot Controller", res, "tokenStr")
+}

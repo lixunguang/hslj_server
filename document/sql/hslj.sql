@@ -104,6 +104,7 @@ CREATE TABLE `location`
     `time_str`   text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci         NULL COMMENT '时间信息',
     `people_num` int(11)                                                       NOT NULL DEFAULT 0 COMMENT '参与人数',
     `rating`     int(11)                                                       NOT NULL DEFAULT 0 COMMENT '评分',
+    `hot`        int(11)                                                       NOT NULL DEFAULT 0 COMMENT '热度，统计多少人来这里踢过',
     `is_auth`    tinyint                                                       NOT NULL DEFAULT 0 COMMENT '是否已经验证0 未验证，1 已经验证',
     `created_at` timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
     `updated_at` timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
@@ -119,23 +120,30 @@ CREATE TABLE `location`
 -- ----------------------------
 INSERT INTO `location`
 VALUES (1, '北京颐和园北宫门', '颐和园是一个皇家园林。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00", 2, '0',
+        13,
         '0', '2023-03-09 16:53:08',
         '2023-04-17 10:29:32');
 INSERT INTO `location`
 VALUES (2, '北京天坛', '天坛是明清两代皇帝“祭天”“祈谷”的场所，总面积273公顷。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1,
-        "08:00~9:00;3:00~5:00", 2, '0', '0',
+        "08:00~9:00;3:00~5:00", 2, '0', 20, '0',
         '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 INSERT INTO `location`
 VALUES (3, '北京玉渊潭公园', '元代,丁氏在池边建亭,以“玉渊”名其亭,于是有了玉渊潭之名。当时,这里已是有名的风景区。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1,
         "08:00~9:00;3:00~5:00", 2,
-        '0', '0', '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+        '0', 14, '0', '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 INSERT INTO `location`
-VALUES (4, '北京望京北小河', '望京北小河。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00", 2, '0', '0',
+VALUES (4, '北京望京北小河', '望京北小河。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00", 2, '0', 3,
+        '0',
         '2023-03-09 16:53:08',
         '2023-04-17 10:29:32');
 INSERT INTO `location`
 VALUES (5, '北京地坛', '原名方泽坛，为明清两代皇帝祭祀皇地祗的场所。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00",
-        2, '0', '0',
+        2, '0', 15, '0',
+        '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+
+INSERT INTO `location`
+VALUES (5, '仰山公园', '一个有很多雕塑的公园。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00",
+        2, '0', 12, '0',
         '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 
 
