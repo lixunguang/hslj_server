@@ -1,2 +1,4 @@
-/bin/log/
+/bin/log/*
 *.exe
+/log/
+/bin/*.exe
