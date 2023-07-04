@@ -31,7 +31,9 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/administrator/add", controller.AddAdmin)
 	g.POST("/administrator/del", controller.DelAdmin)
 
-	//地点
-	g.POST("/location/get", controller.GetLocationList)
-	g.POST("/location/add", controller.AddLocation)
+	//新闻
+	g.POST("/news/latest", controller.GetNewsLatest)
+	g.POST("/news/all", controller.GetNewsAll)
+	g.POST("/news/detail", controller.GetNewsDetail)
+
 }

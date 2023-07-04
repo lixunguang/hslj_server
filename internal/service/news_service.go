@@ -1,34 +1,61 @@
 package service
 
 import (
-
-	"fmt"
 	"github.com/gin-gonic/gin"
-	"hslj/config"
+	"hslj/pkg/util"
+
 	"hslj/internal/dao"
 	"hslj/internal/dto"
 	"hslj/pkg/cerror"
-	"strconv"
 )
 
-//获取前NewsNumber条新闻,NewsNumber为配置项
-func BannerNewsLatest(ctx *gin.Context) ([]dto.PicNews, cerror.Cerror) {
+func NewsLatest(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
 
-	pictureNewsNumberStr := fmt.Sprintf("%d", config.Vipper.Get("News.PictureNewsNumber"))
-	pictureNewsNumber, _ := strconv.ParseInt(pictureNewsNumberStr, 10, 32)
-	dtoPicNews := dao.GetPictureNews(ctx, int(pictureNewsNumber))
+	var res []dto.NewsLatestRes
 
-	return dtoPicNews, nil
+	news, err := dao.GetLatestNews(ctx, 2)
+
+	for _, val := range news {
+		var item dto.NewsLatestRes
+		item.ID = val.ID
+		item.DateStr = val.UpdatedAt.Format(util.FormatDate)
+		item.Title = val.Title
+
+		res = append(res, item)
+	}
+
+	return res, err
 }
 
-func BannerNewsALL(ctx *gin.Context) ([]dto.PicNews, cerror.Cerror) {
+func NewsALL(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
 
-	pictureNewsNumber := -1
-	dtoPicNews := dao.GetPictureNews(ctx, pictureNewsNumber)
+	var res []dto.NewsLatestRes
 
-	return dtoPicNews, nil
+	news, err := dao.GetLatestNews(ctx, 1000)
+
+	for _, val := range news {
+		var item dto.NewsLatestRes
+		item.ID = val.ID
+		item.DateStr = val.UpdatedAt.Format(util.FormatDate)
+		item.Title = val.Title
+
+		res = append(res, item)
+	}
+
+	return res, err
 }
 
-func OneNews(ctx *gin.Context, id dto.IDParam) (dto.NewsResObj, cerror.Cerror) {
-	return dao.GetNewsById(ctx, id)
+func NewsDetail(ctx *gin.Context, id dto.IDParam) (dto.NewsDetailRes, cerror.Cerror) {
+	var res dto.NewsDetailRes
+
+	news, err := dao.GetNewsDetail(ctx, id.ID)
+
+	res.ID = news.ID
+	res.Title = news.Title
+	res.DateStr = news.UpdatedAt.Format(util.FormatDate)
+	res.Author = news.Author
+	res.Content = news.Content
+	res.PictureUrl = news.PictureUrl
+
+	return res, err
 }
