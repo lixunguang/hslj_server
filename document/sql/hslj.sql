@@ -59,11 +59,10 @@ CREATE TABLE `user`
     `id`              int(11)                                                      NOT NULL AUTO_INCREMENT COMMENT '主键',
     `login_id`        varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '登录id，唯一',
     `name`            varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '姓名',
-    `organization_id` int(11)                                                      NOT NULL DEFAULT 0 COMMENT '组织id，包括学校院系班级',
     `password`        varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
     `phone_number`    varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '电话号码',
-    `creator_id`      int(11)                                                      NOT NULL DEFAULT 0 COMMENT '创建人id',
-    `is_deleted`      tinyint(4)                                                   NOT NULL DEFAULT 1 COMMENT '是否删除 1-否 2-是',
+    `active`          int(11)                                                      NOT NULL DEFAULT 0 COMMENT '活跃度，参与打卡的次数',
+    `rank`            int(11)                                                      NOT NULL DEFAULT 0 COMMENT '用户评级',
     `created_at`      timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
     `updated_at`      timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
@@ -179,4 +178,26 @@ VALUES (2, '新闻通知2', 'abcd', '', 'admin', 1, '2023-03-14 11:06:09', '2023
 INSERT INTO `news`
 VALUES (3, '新闻通知3', 'abcd', '', 'admin', 1, '2023-03-14 11:06:09', '2023-03-15 17:39:40');
 
+
+-- ----------------------------
+-- Table structure for record
+-- ----------------------------
+DROP TABLE IF EXISTS `record`;
+CREATE TABLE `record`
+(
+    `id`          int(11)      NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `user_id`     int(11)      NULL     DEFAULT NULL COMMENT '用户id',
+    `location_id` int(11)      NULL     DEFAULT NULL COMMENT '地点id',
+    `created_at`  timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `updated_at`  timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 103
+  CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_general_ci COMMENT = '记录表'
+  ROW_FORMAT = Dynamic;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
+
+

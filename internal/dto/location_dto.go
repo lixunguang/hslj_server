@@ -29,7 +29,10 @@ type AddLocationParam struct {
 }
 
 type AddLocationRes struct {
+
 }
 
 type LocationRes struct {
+	Name string `json:"name"`
+	Desc string `json:"desc"`
 }

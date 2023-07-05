@@ -28,7 +28,7 @@ func GetLocationList(ctx *gin.Context) {
 
 	//调用service
 
-	res, err := service.GetLocation(ctx, param)
+	res, err := service.GetLocationList(ctx, param)
 
 	//结果返回
 	if err == nil {

@@ -3,27 +3,26 @@ package service
 import (
 
 	"github.com/gin-gonic/gin"
+	"hslj/internal/common"
 	"hslj/internal/dao"
 	"hslj/internal/dto"
 	"hslj/pkg/cerror"
 )
 
 // 增加用户
-func AddUser(ctx *gin.Context, param dto.User) (dto.AddUserRes, cerror.Cerror) {
-
-	var res dto.AddUserRes
+func AddUser(ctx *gin.Context, param dto.User) (int, cerror.Cerror) {
 
 	getResult, _ := dao.GetUser(ctx, param.LoginID)
 	if getResult.LoginID == "" { //未查到
 		createRes, err := dao.CreateUser(ctx, param)
 		if err == nil {
-			return dto.AddUserRes{ID: createRes.ID, Name: createRes.Name}, nil
+			return   createRes, nil
 		}
 
-		return res, cerror.ErrorDataAdd
+		return createRes, cerror.ErrorDataAdd
 	}
 
-	return res, cerror.ErrorUserExist
+	return common.InvalidID, cerror.ErrorUserExist
 
 }
 
@@ -49,8 +48,6 @@ func AllUser(ctx *gin.Context) ([]dto.User, cerror.Cerror) {
 		var item dto.User
 		item.Name = val.Name
 		item.LoginID = val.LoginID
-		item.OrganizationID = val.OrganizationID
-		item.OrganizationID = val.OrganizationID
 		item.Password = val.Password
 		res = append(res, item)
 	}
@@ -59,6 +56,3 @@ func AllUser(ctx *gin.Context) ([]dto.User, cerror.Cerror) {
 
 }
 
-func GetUser(ctx *gin.Context, loginID string) (dto.UserRes, cerror.Cerror) {
-	return dao.GetUser(ctx, loginID)
-}

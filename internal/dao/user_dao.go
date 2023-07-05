@@ -1,7 +1,6 @@
 package dao
 
 import (
-
 	"github.com/gin-gonic/gin"
 	"hslj/internal/common"
 	"hslj/internal/dto"
@@ -12,20 +11,49 @@ import (
 
 type User struct {
 	BaseModel
-	LoginID string `gorm:"column:login_id"`
-	// 学号 ,注意区分ID（程序内部使用）和LoginID（对外接口使用），通过GetIDByLoginID和GetLoginIDByID转换 一个为int类型，一个为string类型！！！！
-	Name           string `gorm:"column:name"`            // 姓名
-	OrganizationID int    `gorm:"column:organization_id"` // 所属院系
-	Password       string `gorm:"column:password"`
-	PhoneNumber    string `gorm:"column:phone_number"`
-	CreatorID      int    `gorm:"column:creator_id"` // 创建本用户的管理员id
-	IsDeleted      int8   `gorm:"column:is_deleted"`
+	LoginID     string `gorm:"column:login_id"`
+	Name        string `gorm:"column:name"`   // 姓名
+	Active      int    `gorm:"column:active"` // 用户画像：活跃度
+	Rank        int    `gorm:"column:rank"`   // 用户画像：等级
+	Password    string `gorm:"column:password"`
+	PhoneNumber string `gorm:"column:phone_number"`
 }
 
 func (User) TableName() string {
 	return "user"
 }
 
+func GetUser(ctx *gin.Context, loginID string) (User, cerror.Cerror) {
+	mysqlDB := mysql.GetDB()
+
+	var user User
+	result := mysqlDB.Where("login_id = ? ", loginID).First(&user)
+
+
+	if result.Error != nil {
+		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
+		return user, cerror.ErrorDataGet
+	}
+
+	return user, nil
+}
+
+func CreateUser(ctx *gin.Context, param dto.User) (int, cerror.Cerror) {
+	mysqlDB := mysql.GetDB()
+
+	user := User{LoginID: param.LoginID, Name: param.Name, Password: param.Password}
+	result := mysqlDB.Create(&user)
+
+	var res dto.AddUserRes
+
+	if result.Error != nil {
+		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
+		return common.InvalidID, cerror.ErrorDataAdd
+	}
+
+
+	return res.ID , nil
+}
 // 删除用户
 func DelUser(ctx *gin.Context, login_id string) (string, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
@@ -44,11 +72,10 @@ func DelUser(ctx *gin.Context, login_id string) (string, cerror.Cerror) {
 	return login_id, nil
 }
 
-// 删除用户
+// 更新用户
 func UpdateUser(ctx *gin.Context, param dto.User) (string, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 	var user User
-	user.OrganizationID = param.OrganizationID
 	user.LoginID = param.LoginID
 	user.Name = param.Name
 	user.Password = param.Password
@@ -81,42 +108,7 @@ func AllUser(ctx *gin.Context) ([]User, cerror.Cerror) {
 	return users, nil
 }
 
-func GetUser(ctx *gin.Context, loginID string) (dto.UserRes, cerror.Cerror) {
-	mysqlDB := mysql.GetDB()
 
-	var user User
-	result := mysqlDB.Where("login_id = ? ", loginID).First(&user)
-
-	var userRes dto.UserRes
-	if result.Error != nil {
-		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
-		return userRes, cerror.ErrorDataGet
-	}
-
-	userRes.Name = user.Name
-	userRes.OrganizationID = user.OrganizationID
-	userRes.LoginID = user.LoginID
-
-	return userRes, nil
-}
-
-func CreateUser(ctx *gin.Context, param dto.User) (dto.AddUserRes, cerror.Cerror) {
-	mysqlDB := mysql.GetDB()
-
-	user := User{LoginID: param.LoginID, Name: param.Name, Password: param.Password, OrganizationID: param.OrganizationID}
-	result := mysqlDB.Create(&user)
-
-	var res dto.AddUserRes
-
-	if result.Error != nil {
-		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
-		return res, cerror.ErrorDataAdd
-	}
-
-	res.ID = user.ID
-	res.Name = user.Name
-	return res, nil
-}
 
 // 根据userid获取username
 func GetUserNameByUserID(ctx *gin.Context, userID []int) []string {
@@ -133,6 +125,7 @@ func GetUserNameByUserID(ctx *gin.Context, userID []int) []string {
 	for _, val := range users {
 		userNames = append(userNames, val.Name)
 	}
+
 	return userNames
 }
 

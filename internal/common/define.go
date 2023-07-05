@@ -2,7 +2,6 @@
 package common
 
 import (
-
 	"fmt"
 	"hslj/config"
 )
@@ -73,4 +72,21 @@ func GetCDNAddr() string {
 	addr := fmt.Sprintf("%s", config.Vipper.Get("CDNServer.Addr"))
 
 	return addr
+}
+
+const (
+	TitleLength = 15
+	DescLength = 25
+)
+
+
+func GetShortStr(fullStr string, length int) string {
+	if len(fullStr) <= length {
+		return  fullStr
+	}
+
+	str := fullStr[0:length-1]
+	str += "..."
+
+	return str
 }
