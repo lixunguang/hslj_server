@@ -32,7 +32,11 @@ type AddLocationRes struct {
 
 }
 
-type LocationRes struct {
+type LocationRecordRes struct {
 	Name string `json:"name"`
-	Desc string `json:"desc"`
+
+	DataStr string `json:"data_str"`
+
+
 }
+

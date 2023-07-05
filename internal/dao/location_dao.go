@@ -25,6 +25,21 @@ type Location struct {
 	IsAuth    int    `gorm:"column:is_auth"`
 }
 
+type LocationRes struct {
+	BaseModel
+
+	Name      string `gorm:"column:name"`
+	Desc      string `gorm:"column:desc"` //主要介绍自然景观，毽子场地，路线，时间，注意事项等。
+	Loc       string `gorm:"column:st_ast"`
+	Frequency int    `gorm:"column:frequency"`  //频率
+	TimeStr   string `gorm:"column:time_str"`   //举行时间
+	PeopleNum int    `gorm:"column:people_num"` //参与人数
+	Rating    int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
+	Hot       int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
+	IsAuth    int    `gorm:"column:is_auth"`
+
+}
+
 func (Location) TableName() string {
 	return "location"
 }
@@ -85,12 +100,14 @@ func AddLocation(ctx *gin.Context, param dto.AddLocationParam) (int, cerror.Cerr
 
 }
 
-func GetLocationDetail(ctx *gin.Context,id int) (Location, cerror.Cerror) {
+func GetLocationDetail(ctx *gin.Context,id int) (LocationRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
-	var location Location
+	var location LocationRes
 
-	result := mysqlDB.Where("id = ?",id).First(location)
+	var sqlStr string = "SELECT `name`,`desc`,st_astext(location) as st_ast,`frequency`,`time_str`,`people_num`,`hot`,`rating`,`is_auth` FROM `location` WHERE id= %d;"
+	sqlStr2 := fmt.Sprintf(sqlStr, id)
+	result := mysqlDB.Raw(sqlStr2).Find(&location)
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)

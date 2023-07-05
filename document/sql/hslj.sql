@@ -183,17 +183,27 @@ VALUES (3, '新闻通知3', 'abcde', '', 'admin', 1, '2023-03-14 11:06:09', '202
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record`
 (
-    `id`          int(11)      NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `user_id`     int(11)      NULL     DEFAULT NULL COMMENT '用户id',
-    `location_id` int(11)      NULL     DEFAULT NULL COMMENT '地点id',
-    `created_at`  timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
-    `updated_at`  timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+    `id`            int(11)                                                      NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `user_login_id` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '登录id，唯一',
+    `location_id`   int(11)                                                      NULL     DEFAULT NULL COMMENT '地点id',
+    `created_at`    timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `updated_at`    timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 103
   CHARACTER SET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT = '记录表'
   ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of record
+-- ----------------------------
+INSERT INTO `record`
+VALUES (11, 12134, 3, '2023-07-05 15:50:07', '2023-07-05 19:55:59');
+INSERT INTO `record`
+VALUES (12, 111222, 2, '2023-07-05 15:49:46', '2023-07-05 19:56:03');
+INSERT INTO `record`
+VALUES (103, 12134, 3, '2023-07-05 15:43:34', '2023-07-05 19:56:00');
 
 
 SET FOREIGN_KEY_CHECKS = 1;

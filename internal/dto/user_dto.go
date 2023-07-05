@@ -11,10 +11,17 @@ type UserRes struct {
 	LoginID string `json:"login_id"`
 	Name    string `json:"name"`
 
-	OrganizationID int `json:"organization_id"`
+}
+
+type UserRecordRes struct {
+	LoginID string `json:"login_id"`
+	Name    string `json:"name"`
+	DataStr string `json:"data_str"`
 }
 
 type AddUserRes struct {
 	ID   int    `json:"id"`
 	Name string `json:"name"`
 }
+
+

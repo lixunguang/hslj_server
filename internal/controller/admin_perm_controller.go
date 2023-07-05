@@ -186,7 +186,7 @@ func GetUser(ctx *gin.Context) {
 		}
 
 		fake.UserID = user[0].ID
-		fake.OrganizationID = 1 //todo:for test
+
 
 		fake.Role = 1 // todo:role需要填上值
 		fake.Avatar = "//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png"

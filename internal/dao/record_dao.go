@@ -11,8 +11,8 @@ import (
 
 type Record struct {
 	BaseModel
-	UserID     int `gorm:"column:user_id"`
-	LocationID int `gorm:"column:location_id"`
+	UserLoginID string `gorm:"column:user_login_id"`
+	LocationID  int    `gorm:"column:location_id"`
 }
 
 func (Record) TableName() string {
@@ -23,7 +23,7 @@ func AddRecord(ctx *gin.Context, param dto.AddRecordParam) (int, cerror.Cerror) 
 
 	mysqlDB := mysql.GetDB()
 
-	record := Record{UserID: param.UserID, LocationID: param.LocationID}
+	record := Record{UserLoginID: param.UserLoginID, LocationID: param.LocationID}
 	result := mysqlDB.Create(&record)
 
 	if result.Error != nil {
@@ -39,7 +39,7 @@ func GetRecordByUserID(ctx *gin.Context, param dto.IDParam) ([]Record, cerror.Ce
 	mysqlDB := mysql.GetDB()
 
 	var records []Record
-	result := mysqlDB.Order("updated_at desc").Where("user_id = ?",param.ID).Find(&records)
+	result := mysqlDB.Order("updated_at desc").Where("user_login_id = ?", param.ID).Find(&records)
 	if result.Error != nil {
 		logger.Warnc(ctx, "[newsdao.GetRecordByUserID] fail,err=%+v", result.Error)
 		return nil, cerror.NewCerror(common.Failed, result.Error.Error())
@@ -53,7 +53,7 @@ func GetRecordByLocationID(ctx *gin.Context, param dto.IDParam) ([]Record, cerro
 	mysqlDB := mysql.GetDB()
 
 	var records []Record
-	result := mysqlDB.Order("updated_at desc").Where("location_id = ?",param.ID).Find(&records)
+	result := mysqlDB.Order("updated_at desc").Where("location_id = ?", param.ID).Find(&records)
 	if result.Error != nil {
 		logger.Warnc(ctx, "[newsdao.GetRecordByLocationID] fail,err=%+v", result.Error)
 		return nil, cerror.NewCerror(common.Failed, result.Error.Error())
