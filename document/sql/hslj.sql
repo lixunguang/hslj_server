@@ -56,15 +56,15 @@ VALUES (2, '0', 'admin1', 'admin1', 0, '', 0, 0, '2023-06-07 09:49:27', '2023-06
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`
 (
-    `id`              int(11)                                                      NOT NULL AUTO_INCREMENT COMMENT '主键',
-    `login_id`        varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '登录id，唯一',
-    `name`            varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '姓名',
-    `password`        varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
-    `phone_number`    varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '电话号码',
-    `active`          int(11)                                                      NOT NULL DEFAULT 0 COMMENT '活跃度，参与打卡的次数',
-    `rank`            int(11)                                                      NOT NULL DEFAULT 0 COMMENT '用户评级',
-    `created_at`      timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
-    `updated_at`      timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+    `id`           int(11)                                                      NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `login_id`     varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '登录id，唯一',
+    `name`         varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '姓名',
+    `password`     varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '密码',
+    `phone_number` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '电话号码',
+    `active`       int(11)                                                      NOT NULL DEFAULT 0 COMMENT '活跃度，参与打卡的次数',
+    `rank`         int(11)                                                      NOT NULL DEFAULT 0 COMMENT '用户评级',
+    `created_at`   timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `updated_at`   timestamp(0)                                                 NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 22
@@ -76,17 +76,15 @@ CREATE TABLE `user`
 -- Records of user
 -- ----------------------------
 INSERT INTO `user`
-VALUES (1, '202311111111', 'user1', 1, '11111111', '0', 0, 1, '2023-03-09 16:53:08', '2023-04-17 10:29:32');
+VALUES (1, '202311111111', 'user1', '11111111', '0', 0, 1, '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 INSERT INTO `user`
-VALUES (2, '202311111112', 'lixunguang', 1, 'uua', '0', 0, 1, '2023-03-09 16:54:12', '2023-03-09 16:54:12');
+VALUES (2, '202311111112', 'lixunguang', 'uua', '0', 0, 1, '2023-03-09 16:54:12', '2023-03-09 16:54:12');
 INSERT INTO `user`
-VALUES (3, 'a1', 'admin', 1, 'admin', '0', 0, 1, '2023-03-09 16:55:09', '2023-03-09 16:55:09');
+VALUES (3, '12134', 'admin', 'admin', '0', 0, 1, '2023-03-09 16:55:09', '2023-03-09 16:55:09');
 INSERT INTO `user`
-VALUES (4, '202301002', 'admin', 1, 'admin', '0', 0, 1, '2023-03-21 15:46:25', '2023-04-17 10:29:24');
+VALUES (4, '111222', 'admin', 'admin', '0', 0, 1, '2023-03-21 15:46:25', '2023-04-17 10:29:24');
 INSERT INTO `user`
-VALUES (12, 't1', 'liteacher', 1, 'adminxx', '0', 0, 1, '2023-03-15 09:16:32', '2023-03-22 18:30:07');
-INSERT INTO `user`
-VALUES (18, '2023123456', 'user2', 1, '123456', '0', 0, 1, '2023-03-21 15:46:25', '2023-04-17 10:29:24');
+VALUES (12, '122222', 'liteacher', 'adminxx', '0', 0, 1, '2023-03-15 09:16:32', '2023-03-22 18:30:07');
 
 
 -- ----------------------------
@@ -141,7 +139,7 @@ VALUES (5, '北京地坛', '原名方泽坛，为明清两代皇帝祭祀皇地�
         '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 
 INSERT INTO `location`
-VALUES (5, '仰山公园', '一个有很多雕塑的公园。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00",
+VALUES (6, '仰山公园', '一个有很多雕塑的公园。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00",
         2, '0', 12, '0',
         '2023-03-09 16:53:08', '2023-04-17 10:29:32');
 
@@ -176,7 +174,7 @@ VALUES (1, '新闻通知1', '111', '', 'admin', 1, '2023-03-14 11:06:09', '2023-
 INSERT INTO `news`
 VALUES (2, '新闻通知2', 'abcd', '', 'admin', 1, '2023-03-14 11:06:09', '2023-03-15 17:39:40');
 INSERT INTO `news`
-VALUES (3, '新闻通知3', 'abcd', '', 'admin', 1, '2023-03-14 11:06:09', '2023-03-15 17:39:40');
+VALUES (3, '新闻通知3', 'abcde', '', 'admin', 1, '2023-03-14 11:06:09', '2023-03-15 17:39:40');
 
 
 -- ----------------------------
