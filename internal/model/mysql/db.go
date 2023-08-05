@@ -27,7 +27,7 @@ func OpenDB() {
 	sysType := runtime.GOOS
 	if sysType == "windows" {
 		userName = "root"
-		password = "0925"
+		password = "Gotohell@1"
 		host = "127.0.0.1"
 	}
 

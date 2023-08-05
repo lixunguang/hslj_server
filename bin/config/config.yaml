@@ -6,7 +6,7 @@ Server:
 Database:
   UserName: lixunguang
   Password: "Gotohell@1" #"Gotohell@1" #0925
-  Host: 10.30.112.202 #127.0.0.1 :3306 10.30.112.202:3306
+  Host: 10.16.111.61 #127.0.0.1 :3306 10.30.112.202:3306
   Port: "3306"
   DBName: HSLJ_DB
   Charset: utf8

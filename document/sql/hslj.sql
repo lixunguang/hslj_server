@@ -206,6 +206,36 @@ INSERT INTO `record`
 VALUES (103, 12134, 3, '2023-07-05 15:43:34', '2023-07-05 19:56:00');
 
 
+
+-- ----------------------------
+-- Table structure for today
+-- ----------------------------
+DROP TABLE IF EXISTS `today`;
+CREATE TABLE `today`
+(
+    `id`          int(11)                                                   NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `lunar_desc`  tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '农历节日描述',
+    `txt`         text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci     NULL COMMENT '一段美好的文字',
+    `picture_url` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'url',
+    `created_at`  timestamp(0)                                              NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `updated_at`  timestamp(0)                                              NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 103
+  CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_general_ci COMMENT = '今天'
+  ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of today
+-- ----------------------------
+INSERT INTO `today`
+VALUES (11, ‘qqqqq’, ‘ccc’, ‘fsad’, '2023-07-05 15:50:07', '2023-07-05 19:52:59');
+INSERT INTO `today`
+VALUES (22, ‘aaaaaa’, ‘dd’, ‘fsdf’, '2023-07-05 15:50:07', '2023-07-05 19:55:59');
+INSERT INTO `today`
+VALUES (33, ‘bbbbbbbb’, ‘dd’, ‘da’, '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 
