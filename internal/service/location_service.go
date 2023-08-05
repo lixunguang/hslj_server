@@ -8,13 +8,28 @@ import (
 	"hslj/pkg/cerror"
 )
 
-func GetLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]dto.GetLocationListRes, cerror.Cerror) {
+func GetLocation(ctx *gin.Context, id int) (dto.LocationRes, cerror.Cerror) {
 
-	var res []dto.GetLocationListRes
+	var res dto.LocationRes
+
+	location, err := dao.GetLocationDetail(ctx, id)
+	res.ID = location.ID
+	res.Desc = location.Desc
+	res.Name = location.Name
+	res.Rating = location.Rating
+	res.Latitude =12
+	res.Longitude = 34
+
+	return res, err
+}
+
+func GetLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]dto.LocationRes, cerror.Cerror) {
+
+	var res []dto.LocationRes
 
 	location, err := dao.GetLocationList(ctx, param)
 	for _, val := range location {
-		var item dto.GetLocationListRes
+		var item dto.LocationRes
 		item.ID = val.ID
 		item.Rating = val.Rating
 		item.Name = common.GetShortStr(val.Name,common.TitleLength)
@@ -27,21 +42,21 @@ func GetLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]dto.Ge
 	return res, err
 }
 
-func GetLocationHot(ctx *gin.Context) ([]dto.GetLocationListRes, cerror.Cerror) {
+func GetLocationHot(ctx *gin.Context) ([]dto.LocationRes, cerror.Cerror) {
 
-	var res []dto.GetLocationListRes
+	var res []dto.LocationRes
 
 	location, err := dao.GetLocationHot(ctx)
 	for _, val := range location {
-		var item dto.GetLocationListRes
+		var item dto.LocationRes
 		item.ID = val.ID
 		item.Name = common.GetShortStr(val.Name,common.TitleLength)
 		item.Desc = common.GetShortStr(val.Desc,common.DescLength)
 		item.Rating = val.Rating
 		item.Longitude = 12
 		item.Latitude = 34
-		res = append(res, item)
 
+		res = append(res, item)
 	}
 
 	return res, err

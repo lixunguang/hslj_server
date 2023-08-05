@@ -4,7 +4,7 @@ type GetLocationListParam struct {
 	LocationCode int `json:"location_code"`
 }
 
-type GetLocationListRes struct {
+type LocationRes struct {
 	ID        int     `json:"id"`
 	Name      string  `json:"name"`
 	Desc      string  `json:"desc"`
