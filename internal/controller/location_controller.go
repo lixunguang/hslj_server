@@ -27,7 +27,6 @@ func GetLocation(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-
 	res, err := service.GetLocation(ctx, param.ID)
 
 	//结果返回
@@ -99,7 +98,6 @@ func AddLocation(ctx *gin.Context) {
 
 	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "AddLocation Controller", res, "tokenStr")
 }
-
 
 func GetLocationHot(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "GetLocationHot Controller")

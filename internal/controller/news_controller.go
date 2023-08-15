@@ -18,7 +18,6 @@ func GetNewsLatest(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-
 	res, err := service.NewsLatest(ctx)
 
 	//结果返回
@@ -53,8 +52,8 @@ func GetNewsAll(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetNewsAll Controller", res, "tokenStr")
 }
 
-func GetNewsDetail(ctx *gin.Context) {
-	logger.Infoc(ctx, "[%s] start***", "GetNewsDetail Controller")
+func GetNews(ctx *gin.Context) {
+	logger.Infoc(ctx, "[%s] start***", "GetNews Controller")
 
 	// 获取参数
 	var param dto.IDParam
@@ -64,7 +63,7 @@ func GetNewsDetail(ctx *gin.Context) {
 		return
 	}
 	if util.IsDebug() {
-		logger.Infoc(ctx, "[%s] input param: %+v", "GetNewsDetail Controller", param)
+		logger.Infoc(ctx, "[%s] input param: %+v", "GetNews Controller", param)
 	}
 
 	//参数校验
@@ -80,5 +79,5 @@ func GetNewsDetail(ctx *gin.Context) {
 		util.FailJson(ctx, err)
 	}
 
-	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetNewsDetail Controller", res, "tokenStr")
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetNews Controller", res, "tokenStr")
 }

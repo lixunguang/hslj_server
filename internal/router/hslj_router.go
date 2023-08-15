@@ -34,7 +34,7 @@ func hsljRouter(e *gin.Engine) {
 	//新闻
 	g.POST("/news/latest", controller.GetNewsLatest)
 	g.POST("/news/all", controller.GetNewsAll)
-	g.POST("/news/detail", controller.GetNewsDetail)
+	g.POST("/news/detail", controller.GetNews)
 
 	//地点
 	g.POST("/location", controller.GetLocation)

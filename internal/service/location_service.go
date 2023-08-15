@@ -24,10 +24,9 @@ func GetLocation(ctx *gin.Context, id int) (dto.LocationRes, cerror.Cerror) {
 }
 
 func GetLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]dto.LocationRes, cerror.Cerror) {
-
 	var res []dto.LocationRes
 
-	location, err := dao.GetLocationList(ctx, param)
+	location, err := dao.GetLocationList(ctx, param.LocationCode)
 	for _, val := range location {
 		var item dto.LocationRes
 		item.ID = val.ID

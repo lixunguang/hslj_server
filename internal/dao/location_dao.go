@@ -44,12 +44,12 @@ func (Location) TableName() string {
 	return "location"
 }
 
-func GetLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]Location, cerror.Cerror) {
+func GetLocationList(ctx *gin.Context, areaCode int) ([]Location, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var location []Location
 
-	result := mysqlDB.Find(&location)
+	result := mysqlDB.Where("area_code = ?", areaCode).Find(&location)
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
