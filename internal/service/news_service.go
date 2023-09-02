@@ -20,6 +20,7 @@ func NewsLatest(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
 		item.ID = val.ID
 		item.DateStr = val.UpdatedAt.Format(util.FormatDate)
 		item.Title = val.Title
+		item.PictureUrl= val.PictureUrl
 
 		res = append(res, item)
 	}
