@@ -1,7 +1,6 @@
 package controller
 
 import (
-
 	"github.com/gin-gonic/gin"
 	"hslj/internal/dto"
 	"hslj/internal/service"
@@ -11,7 +10,7 @@ import (
 )
 
 func GetLocation(ctx *gin.Context) {
-	logger.Infoc(ctx, "[%s] start***", "GetLocationList Controller")
+	logger.Infoc(ctx, "[%s] start***", "GetAreaLocationList Controller")
 
 	// 获取参数
 	var param dto.IDParam
@@ -21,7 +20,7 @@ func GetLocation(ctx *gin.Context) {
 		return
 	}
 	if util.IsDebug() {
-		logger.Infoc(ctx, "[%s] input param: %+v", "GetLocationList Controller", param)
+		logger.Infoc(ctx, "[%s] input param: %+v", "GetAreaLocationList Controller", param)
 	}
 
 	//参数校验
@@ -36,11 +35,11 @@ func GetLocation(ctx *gin.Context) {
 		util.FailJson(ctx, err)
 	}
 
-	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetLocationList Controller", res, "tokenStr")
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetAreaLocationList Controller", res, "tokenStr")
 }
 
-func GetLocationList(ctx *gin.Context) {
-	logger.Infoc(ctx, "[%s] start***", "GetLocationList Controller")
+func GetAreaLocationList(ctx *gin.Context) {
+	logger.Infoc(ctx, "[%s] start***", "GetAreaLocationList Controller")
 
 	// 获取参数
 	var param dto.GetLocationListParam
@@ -50,14 +49,14 @@ func GetLocationList(ctx *gin.Context) {
 		return
 	}
 	if util.IsDebug() {
-		logger.Infoc(ctx, "[%s] input param: %+v", "GetLocationList Controller", param)
+		logger.Infoc(ctx, "[%s] input param: %+v", "GetAreaLocationList Controller", param)
 	}
 
 	//参数校验
 
 	//调用service
 
-	res, err := service.GetLocationList(ctx, param)
+	res, err := service.GetAreaLocationList(ctx, param)
 
 	//结果返回
 	if err == nil {
@@ -66,7 +65,7 @@ func GetLocationList(ctx *gin.Context) {
 		util.FailJson(ctx, err)
 	}
 
-	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetLocationList Controller", res, "tokenStr")
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetAreaLocationList Controller", res, "tokenStr")
 }
 
 func AddLocation(ctx *gin.Context) {
@@ -103,7 +102,6 @@ func GetLocationHot(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "GetLocationHot Controller")
 
 	// 获取参数
-
 
 	//参数校验
 

@@ -43,7 +43,7 @@ func (Location) TableName() string {
 	return "location"
 }
 
-func GetLocationList(ctx *gin.Context, areaCode int) ([]Location, cerror.Cerror) {
+func GetAreaLocationList(ctx *gin.Context, areaCode int) ([]Location, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var location []Location

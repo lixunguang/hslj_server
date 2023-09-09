@@ -41,12 +41,12 @@ func hsljRouter(e *gin.Engine) {
 
 	//地点
 	g.POST("/location", controller.GetLocation)
-	g.POST("/location/list", controller.GetLocationList)
+	g.POST("/location/list", controller.GetAreaLocationList)
 	g.POST("/location/add", controller.AddLocation)
 	g.POST("/location/hot", controller.GetLocationHot)
 
 	//地点-打卡
 	g.POST("/record/add", controller.AddRecord)
-	g.POST("/record/location/get", controller.GetRecordByUserID)
-	g.POST("/record/user/get", controller.GetRecordByLocationID)
+	g.POST("/record/userLocation", controller.GetRecordByUserID)
+	g.POST("/record/locationUser", controller.GetRecordByLocationID)
 }
