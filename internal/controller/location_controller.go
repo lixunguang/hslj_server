@@ -68,6 +68,35 @@ func GetAreaLocationList(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetAreaLocationList Controller", res, "tokenStr")
 }
 
+func GetLocationActive(ctx *gin.Context) {
+	logger.Infoc(ctx, "[%s] start***", "GetLocationActive Controller")
+
+	// 获取参数
+	var param dto.GetLocationListParam
+	if err := ctx.ShouldBindJSON(&param); err != nil {
+		logger.Errorc(ctx, "[%s] bind params fail,err=%+v", "method", err)
+		util.FailJson(ctx, cerror.InvalidParams)
+		return
+	}
+	if util.IsDebug() {
+		logger.Infoc(ctx, "[%s] input param: %+v", "GetLocationActive Controller", param)
+	}
+
+	//参数校验
+
+	//调用service
+	res, err := service.GetAreaLocationList(ctx, param)
+
+	//结果返回
+	if err == nil {
+		util.SuccessJson(ctx, res)
+	} else {
+		util.FailJson(ctx, err)
+	}
+
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetLocationActive Controller", res, "tokenStr")
+}
+
 func AddLocation(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "AddLocation Controller")
 	// 获取参数

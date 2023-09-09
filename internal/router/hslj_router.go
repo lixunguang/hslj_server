@@ -45,6 +45,7 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/location/list", controller.GetAreaLocationList)
 	g.POST("/location/add", controller.AddLocation)
 	g.POST("/location/hot", controller.GetLocationHot)
+	g.POST("/location/active", controller.GetLocationActive)
 
 	//地点-打卡
 	g.POST("/record/add", controller.AddRecord)
