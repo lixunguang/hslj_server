@@ -9,6 +9,25 @@ import (
 	"hslj/pkg/cerror"
 )
 
+func NewsBanner(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
+
+	var res []dto.NewsLatestRes
+
+	news, err := dao.GetLatestNews(ctx, 3)
+
+	for _, val := range news {
+		var item dto.NewsLatestRes
+		item.ID = val.ID
+		item.DateStr = val.UpdatedAt.Format(util.FormatDate)
+		item.Title = val.Title
+		item.PictureUrl = val.PictureUrl
+
+		res = append(res, item)
+	}
+
+	return res, err
+}
+
 func NewsLatest(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
 
 	var res []dto.NewsLatestRes
@@ -20,7 +39,7 @@ func NewsLatest(ctx *gin.Context) ([]dto.NewsLatestRes, cerror.Cerror) {
 		item.ID = val.ID
 		item.DateStr = val.UpdatedAt.Format(util.FormatDate)
 		item.Title = val.Title
-		item.PictureUrl= val.PictureUrl
+		item.PictureUrl = val.PictureUrl
 
 		res = append(res, item)
 	}

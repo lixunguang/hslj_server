@@ -14,7 +14,6 @@ func GetNewsLatest(ctx *gin.Context) {
 
 	// 获取参数
 
-
 	//参数校验
 
 	//调用service
@@ -30,11 +29,30 @@ func GetNewsLatest(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetNewsLatest Controller", res, "tokenStr")
 }
 
+func GetNewsBanner(ctx *gin.Context) {
+	logger.Infoc(ctx, "[%s] start***", "GetNewsLatest Controller")
+
+	// 获取参数
+
+	//参数校验
+
+	//调用service
+	res, err := service.NewsBanner(ctx)
+
+	//结果返回
+	if err == nil {
+		util.SuccessJson(ctx, res)
+	} else {
+		util.FailJson(ctx, err)
+	}
+
+	logger.Infoc(ctx, "[%s] end***  result:  res=%+v,token =%+v", "GetNewsLatest Controller", res, "tokenStr")
+}
+
 func GetNewsAll(ctx *gin.Context) {
 	logger.Infoc(ctx, "[%s] start***", "GetNewsAll Controller")
 
 	// 获取参数
-
 
 	//参数校验
 
