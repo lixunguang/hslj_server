@@ -37,7 +37,6 @@ type LocationRes struct {
 	Rating    int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
 	Hot       int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
 	IsAuth    int    `gorm:"column:is_auth"`
-
 }
 
 func (Location) TableName() string {
@@ -87,20 +86,31 @@ func AddLocation(ctx *gin.Context, param dto.AddLocationParam) (int, cerror.Cerr
 	location.Rating = param.Rating
 	location.Loc = "sda"
 
-	var sqlStr string = "INSERT INTO `location` (`name`,`desc`,`location`,`frequency`,`time_str`,`people_num`,`rating`) VALUES ( '%s', '%s',ST_GeomFromText('POINT(121.474103 31.232862)'),'%d','%s','%d', '%d');"
-	sqlStr2 := fmt.Sprintf(sqlStr, param.Name, param.Desc, param.Frequency, param.TimeStr, param.PeopleNum, param.Rating)
-	result := mysqlDB.Exec(sqlStr2)
+	var sqlTemplate string = "INSERT INTO `location` (`name`,`desc`,`location`,`frequency`,`time_str`,`people_num`,`rating`) VALUES ( '%s', '%s',ST_GeomFromText('POINT(121.474103 31.232862)'),'%d','%s','%d', '%d');"
+	sqlStr := fmt.Sprintf(sqlTemplate, param.Name, param.Desc, param.Frequency, param.TimeStr, param.PeopleNum, param.Rating)
+
+	var locationRes Location
+	result := mysqlDB.Raw(sqlStr).Find(&locationRes)
 
 	if result.Error != nil {
 		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
 		return common.InvalidID, cerror.ErrorDataAdd
 	}
 
-	return location.ID, nil
+	// 获取插入的自增 ID
+	//var insertedID int64
+	var res int
+	err := mysqlDB.Raw("SELECT LAST_INSERT_ID()").Scan(&res)
+	if err.Error != nil {
+		logger.Warnc(ctx, "[userDao.CheckUser] fail 2,err=%+v", result.Error)
+		return common.InvalidID, cerror.ErrorDataAdd
+	}
+
+	return res, nil
 
 }
 
-func GetLocationDetail(ctx *gin.Context,id int) (LocationRes, cerror.Cerror) {
+func GetLocationDetail(ctx *gin.Context, id int) (LocationRes, cerror.Cerror) {
 	mysqlDB := mysql.GetDB()
 
 	var location LocationRes

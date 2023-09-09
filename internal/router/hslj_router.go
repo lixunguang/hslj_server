@@ -1,7 +1,6 @@
 package router
 
 import (
-
 	"github.com/gin-gonic/gin"
 	"hslj/internal/controller"
 )
@@ -34,7 +33,11 @@ func hsljRouter(e *gin.Engine) {
 	//新闻
 	g.POST("/news/latest", controller.GetNewsLatest)
 	g.POST("/news/all", controller.GetNewsAll)
-	g.POST("/news/detail", controller.GetNews)
+	g.POST("/news", controller.GetNews)
+
+	//today
+	g.POST("/today", controller.GetToday)
+	g.POST("/today/short", controller.GetTodayShort)
 
 	//地点
 	g.POST("/location", controller.GetLocation)

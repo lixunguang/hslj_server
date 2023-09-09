@@ -75,18 +75,18 @@ func GetCDNAddr() string {
 }
 
 const (
-	TitleLength = 15
-	DescLength = 25
+	TitleLength = 8
+	DescLength  = 12
 )
 
-
 func GetShortStr(fullStr string, length int) string {
-	if len(fullStr) <= length {
-		return  fullStr
+	var runeStr = []rune(fullStr)
+	if len(runeStr) <= length {
+		return string(runeStr)
 	}
 
-	str := fullStr[0:length-1]
-	str += "..."
+	runeStr = runeStr[0 : length-1]
 
-	return str
+	return string(runeStr) + "..."
+
 }

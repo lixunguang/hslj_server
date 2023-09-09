@@ -271,7 +271,7 @@ VALUES (12, '山东12', ' 陶然亭是清代的名亭，也是中国四大名亭
         '2023-04-17 10:29:32');
 
 INSERT INTO `location`
-VALUES (12, '山东13', ' 陶然亭是清代的名亭，也是中国四大名亭之一。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00", 2, '0',
+VALUES (13, '山东13', ' 陶然亭是清代的名亭，也是中国四大名亭之一。', ST_GeomFromText('POINT(121.474103 31.232862)'), 1, "08:00~9:00;3:00~5:00", 2, '0',
         13,370000,
         '0', '2023-03-09 16:53:08',
         '2023-04-17 10:29:32');
@@ -305,7 +305,7 @@ VALUES (1, '大马路小学', '大马路小学冬季锻炼系列赛之踢毽子�
         'https://2023.ibe.cn/wp-content/uploads/2023/08/2023082201392746-1024x682.png', 'admin', 1, '2021-01-22 11:06:09', '2021-01-22 17:39:40');
 INSERT INTO `news`
 VALUES (2, '彩毽飞扬，凝聚力量', '为营造和谐、快乐的工作环境，丰富活跃职工文化生活，提高职工身体素质与团队凝聚力。5月21日上午，沃尔德北方工厂举办了一场团体踢毽子比赛，来自不同部门的90余名职工参加了比赛。',
-        'https://2023.ibe.cn/wp-content/uploads/2023/08/2023082201392746-1024x682.png', 'admin', 1, '2023-03-14 11:06:09', '2022-05-25 17:39:40');
+        'https://2023.ibe.cn/wp-content/uploads/2023/05/2023051214530675-e1683875105592.png', 'admin', 1, '2023-03-14 11:06:09', '2022-05-25 17:39:40');
 INSERT INTO `news`
 VALUES (3, '喜迎二十大，健康向未来', '为大力营造喜迎党的二十大浓厚氛围，力学与土木工程学院工会将举办首届“砼心圆——踢毽子”趣味比赛。
 一、活动主题
@@ -317,7 +317,7 @@ VALUES (3, '喜迎二十大，健康向未来', '为大力营造喜迎党的二�
 四、活动规则
 本次比赛只设置个人单项赛，一分钟计时。比赛开始后，参加者可以用脚、下肢等任意部位接触毽子。根据一分钟内踢的次数进行名次排序，次数相同者中途落地次数少者排名靠前；如仍难以排定次序，另加赛10个，用时短者胜出。
 比赛设一、二、三等奖若干名，其中第1名为一等奖、第2名和第3名为二等奖、其余完成比赛的为三等奖。
-本次比赛为学院首届踢毽子比赛，让我们走出办公室，活动筋骨、舒缓疲惫、放松身心，以更加积极向上的精气神迎接党的二十大胜利召开。', 'https://2023.ibe.cn/wp-content/uploads/2023/08/2023082201392746-1024x682.png', 'admin', 1, '2023-03-14 11:06:09', '2023-03-16 17:39:40');
+本次比赛为学院首届踢毽子比赛，让我们走出办公室，活动筋骨、舒缓疲惫、放松身心，以更加积极向上的精气神迎接党的二十大胜利召开。', 'https://2023.ibe.cn/wp-content/uploads/2023/05/2023051214552348-e1683874847942.png', 'admin', 1, '2023-03-14 11:06:09', '2023-03-16 17:39:40');
 
 
 -- ----------------------------
@@ -360,6 +360,7 @@ CREATE TABLE `today`
     `lunar_desc`  tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '农历节日描述',
     `txt`         text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci     NULL COMMENT '一段美好的文字',
     `picture_url` tinytext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'url',
+    `date`        varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT '日期，如20230902',
     `created_at`  timestamp(0)                                              NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
     `updated_at`  timestamp(0)                                              NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
@@ -372,12 +373,27 @@ CREATE TABLE `today`
 -- ----------------------------
 -- Records of today
 -- ----------------------------
+
 INSERT INTO `today`
-VALUES (11, ‘qqqqq’, ‘ccc’, ‘fsad’, '2023-07-05 15:50:07', '2023-07-05 19:52:59');
+VALUES (11, '白露:露从今夜白，月是故乡明。',  '世事早已擦肩而过，我们又何必反复追忆，反复提起。是时候和昨天告别了，忘记一切，也原谅一切。是真的忘记，做到心平气和，在安稳的现世里，循规蹈矩的过日子。不再追求虚浮的奢华，不再喜好俏丽的颜色，不再渴望热烈的爱情。只愿在简约的四季里，穿粗布素衣，和某个平淡的人，一同老去，相约白头。', 'https://desktop.github.com/images/desktop-icon.svg', '20230902','2023-07-05 15:50:07', '2023-07-05 19:52:59');
 INSERT INTO `today`
-VALUES (22, ‘aaaaaa’, ‘dd’, ‘fsdf’, '2023-07-05 15:50:07', '2023-07-05 19:55:59');
+VALUES (22, 'aaaaaa', '20230913', 'https://desktop.github.com/images/desktop-icon.svg','20230903', '2023-07-05 15:50:07', '2023-07-05 19:55:59');
 INSERT INTO `today`
-VALUES (33, ‘bbbbbbbb’, ‘dd’, ‘da’, '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+VALUES (33, 'bbbbbbbb', '20230914', 'https://desktop.github.com/images/desktop-icon.svg','20230904', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (44, 'bbbbbbbb', '20230915', 'https://desktop.github.com/images/desktop-icon.svg','20230905', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (55, 'bbbbbbbb', '20230916', 'https://desktop.github.com/images/desktop-icon.svg','20230906', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (66, 'bbbbbbbb', '20230917', 'https://desktop.github.com/images/desktop-icon.svg','20230907', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (77, 'bbbbbbbb', '20230908', 'https://desktop.github.com/images/desktop-icon.svg','20230908', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (90, 'bbbbbbbb', '20230909', 'https://desktop.github.com/images/desktop-icon.svg','20230909', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (91, 'bbbbbbbb', '20230910', 'https://desktop.github.com/images/desktop-icon.svg','20230910', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
+INSERT INTO `today`
+VALUES (92, 'bbbbbbbb', '20230911', 'https://desktop.github.com/images/desktop-icon.svg','20230911', '2023-07-05 15:50:07', '2023-07-05 19:54:59');
 
 SET FOREIGN_KEY_CHECKS = 1;
 
