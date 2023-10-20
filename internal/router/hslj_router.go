@@ -36,6 +36,10 @@ func hsljRouter(e *gin.Engine) {
 	g.POST("/news/all", controller.GetNewsAll)
 	g.POST("/news", controller.GetNews)
 
+	//资源，先简单处理，不进行分类
+	g.POST("/action/all", controller.GetActionAll)
+	g.POST("/action", controller.GetAction)
+
 	//today
 	g.POST("/today", controller.GetToday)
 	g.POST("/today/short", controller.GetTodayShort)

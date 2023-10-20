@@ -18,6 +18,44 @@ SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
+-- Table structure for action
+-- ----------------------------
+DROP TABLE IF EXISTS `action`;
+CREATE TABLE `action`
+(
+    `id`          int(11)                                                       NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `title`       varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '0' COMMENT '动作名称',
+    `content`     text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci         NULL COMMENT '动作介绍',
+    `created_at`  timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `updated_at`  timestamp(0)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(0) ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+    PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 103
+  CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_general_ci COMMENT = '毽子动作'
+  ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of action
+-- ----------------------------
+INSERT INTO `action`
+VALUES (1, '盘踢', '盘踢，即用左右两脚互换踢毽。髋关节和膝关节放松，踝关节发力带动小腿上摆，膝关节向外摆，大腿自内向外翻转，用脚的内侧向上垂直踢起毽子。一般踢起的高度不超过下颌。
+初练习时，可以先不用毽子，模仿踢毽子的动作做“空踢”练习。练习时，一腿站立，另一腿膝关节外张，大腿翻转至内侧向上抬起，脚尖向前，脚跟与直立腿保持一脚远的距离，高度约与直立腿膝关节相同。抬好后，坚持几秒钟再放下，换另一条腿练习。两条腿的动作基本准确定型后，就可以用毽子直接练习了。这种方法可以比较快地掌握入门技术。',
+        '2021-01-22 11:06:09', '2021-01-22 17:39:40');
+INSERT INTO `action`
+VALUES (2, '绷踢', '绷踢，即用脚尖外三趾部分互换踢毽子（其他部位踢出的毽子不稳，并且容易砸脚），髋关节、膝关节、踝关节放松，大腿向前抬起，身体成150°～160°夹角。踢毽时，脚尖外三趾部位与脚跟同时发力，使脚尖外三趾向上发力时带动全脚向上勾起。两脚跟发力带动小腿向前摆出，大腿保持原角度，将毽子踢起，高低均可。',
+        '2023-03-14 11:06:09', '2022-05-25 17:39:40');
+INSERT INTO `action`
+VALUES (3, '磕踢', '磕踢，即用两腿膝盖部分互换踢毽子。髋关节、膝关节、踝关节放松，小腿自然下垂，足尖稍指地，膝关节发力，带动大腿上摆，将毽子撞起，一般不超过下颌。
+练习时，双肘放于腰间，掌心向下，前臂前伸，同上臂成90°夹角不动。用“空踢”的方法进行练习，膝关节发力，用膝盖部位撞击双手发出声响，很像用手击打膝盖的声音(但绝不是击打)，如果声音不像，那么就是动作错误，原因不外是膝关节、髋关节没有放松，小腿没有自然下垂，造成膝关节发力受到限制，此时需要及时调整动作。声音相像后，再使用毽子进行练习，就容易多了。',
+        '2023-03-14 11:06:09', '2022-05-25 17:39:40');
+INSERT INTO `action`
+VALUES (4, '拐踢', '拐踢，即用两脚外侧互换踢毽子。髋关节、膝关节放松自然下垂，勾脚尖，踝关节发力带动小腿，向体侧后上方摆动，当踢毽的瞬间，踢毽脚的脚内侧应平行于地面，高度约为30厘米左右，踢起的毽子一般与肩膀平齐。
+练习时，先采用“空踢”的方法进行练习，动作基本准确后，再用“一踢一接”的方法练习，即用手将毽子在体侧抛起，高度约与肩部平齐，用拐踢将毽子踢起，用手将毽子接住，再抛、再踢、再接（这种方法适用于各种踢法的练习)。动作基本准确后，改为两踢一接、三踢一接……熟练后不再用手接毽子，进行双腿互换的练习，次数越多越好。',
+        '2023-03-14 11:06:09', '2022-05-25 17:39:40');
+
+
+-- ----------------------------
 -- Table structure for admin
 -- ----------------------------
 
@@ -69,7 +107,7 @@ CREATE TABLE `user`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 22
   CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '用户表，student表'
+  COLLATE = utf8mb4_general_ci COMMENT = '用户表，用来存储用户信息'
   ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -194,7 +232,7 @@ CREATE TABLE `active_location`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 22
   CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '活跃地点表，动态生成主要关注地点的动态活跃信息，从location表而来'
+  COLLATE = utf8mb4_general_ci COMMENT = '活跃地点表，动态生成主要关注地点的动态活跃信息（正在进行或者将要进行，用来在首页提示用户，需要有个后台进程维护这个表），从location表而来，设计的目的是为了减轻location表的负担。'
   ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -336,7 +374,7 @@ CREATE TABLE `news`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 103
   CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '新闻表'
+  COLLATE = utf8mb4_general_ci COMMENT = '最新信息表，用来展示毽子的相关新闻'
   ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -381,7 +419,7 @@ CREATE TABLE `record`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 103
   CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '记录表'
+  COLLATE = utf8mb4_general_ci COMMENT = '记录表，用来记录用户的打卡记录'
   ROW_FORMAT = Dynamic;
 
 -- ----------------------------
@@ -413,7 +451,7 @@ CREATE TABLE `today`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 103
   CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '今天'
+  COLLATE = utf8mb4_general_ci COMMENT = '今天，非核心功能，用来显示当日的一些信息'
   ROW_FORMAT = Dynamic;
 
 -- ----------------------------

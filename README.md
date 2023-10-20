@@ -15,11 +15,10 @@ todo:
 4）定义dao
 
 
-1）web服务器
-2）接口服务器
-3）文件服务器
+1. web服务器  
+2. 接口服务器  
+3. 文件服务器  
 
 
 
-服务端开发过程
-1）开发完成后，提交代码后，https://cloud.weixin.qq.com/cloudrun/service/golang-5aqo 会自动编译，部署。
+

@@ -1,7 +1,6 @@
 package mysql
 
 import (
-
 	"fmt"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -26,7 +25,7 @@ func OpenDB() {
 	//todo:for test env
 	sysType := runtime.GOOS
 	if sysType == "windows" {
-		userName = "root"
+		userName = "lixunguang"
 		password = "Gotohell@1"
 		host = "127.0.0.1"
 	}

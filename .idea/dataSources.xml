@@ -8,5 +8,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@sh-cynosdbmysql-grp-9vfv8hfg.sql.tencentcdb.com" uuid="046ce3d5-1655-4170-9b3d-f1f4f0451a8a">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://sh-cynosdbmysql-grp-9vfv8hfg.sql.tencentcdb.com:21111</jdbc-url>
+    </data-source>
   </component>
 </project>
