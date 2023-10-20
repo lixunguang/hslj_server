@@ -85,7 +85,7 @@ func GetLocationActive(ctx *gin.Context) {
 	//参数校验
 
 	//调用service
-	res, err := service.GetAreaLocationList(ctx, param)
+	res, err := service.GetAreaLocationList(ctx, param) //todo:需要修改
 
 	//结果返回
 	if err == nil {
