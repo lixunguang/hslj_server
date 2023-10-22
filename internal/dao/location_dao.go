@@ -14,29 +14,31 @@ import (
 type Location struct {
 	BaseModel
 
-	Name      string `gorm:"column:name"`
-	Desc      string `gorm:"column:desc"` //主要介绍自然景观，毽子场地，路线，时间，注意事项等。
-	Loc       string `gorm:"column:location"`
-	Frequency int    `gorm:"column:frequency"`  //频率
-	TimeStr   string `gorm:"column:time_str"`   //举行时间
-	PeopleNum int    `gorm:"column:people_num"` //参与人数
-	Rating    int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
-	Hot       int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
-	IsAuth    int    `gorm:"column:is_auth"`
+	Name         string `gorm:"column:name"`
+	Desc         string `gorm:"column:desc"`          //主要介绍自然景观，毽子场地，路线，时间，注意事项等。
+	LocationDesc string `gorm:"column:location_desc"` //新增
+	Loc          string `gorm:"column:location"`
+	Frequency    int    `gorm:"column:frequency"`  //频率
+	TimeStr      string `gorm:"column:time_str"`   //举行时间
+	PeopleNum    int    `gorm:"column:people_num"` //参与人数
+	Rating       int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
+	Hot          int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
+	IsAuth       int    `gorm:"column:is_auth"`
 }
 
 type LocationRes struct {
 	BaseModel
 
-	Name      string `gorm:"column:name"`
-	Desc      string `gorm:"column:desc"` //主要介绍自然景观，毽子场地，路线，时间，注意事项等。
-	Loc       string `gorm:"column:st_ast"`
-	Frequency int    `gorm:"column:frequency"`  //频率
-	TimeStr   string `gorm:"column:time_str"`   //举行时间
-	PeopleNum int    `gorm:"column:people_num"` //参与人数
-	Rating    int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
-	Hot       int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
-	IsAuth    int    `gorm:"column:is_auth"`
+	Name         string `gorm:"column:name"`
+	Desc         string `gorm:"column:desc"`          //主要介绍自然景观，毽子场地，路线，时间，注意事项等。
+	LocationDesc string `gorm:"column:location_desc"` //新增
+	Loc          string `gorm:"column:st_ast"`
+	Frequency    int    `gorm:"column:frequency"`  //频率
+	TimeStr      string `gorm:"column:time_str"`   //举行时间
+	PeopleNum    int    `gorm:"column:people_num"` //参与人数
+	Rating       int    `gorm:"column:rating"`     //综合评分，包括参与人数，场地，技术水平，文化氛围等，比如每一个月启动一次评价
+	Hot          int    `gorm:"column:hot"`        //热度，一段时间内参与的人数,是一个动态调整的概念，比如每一个月启动一次评价，进入热门场地
+	IsAuth       int    `gorm:"column:is_auth"`
 }
 
 func (Location) TableName() string {
@@ -77,8 +79,10 @@ func AddLocation(ctx *gin.Context, param dto.AddLocationParam) (int, cerror.Cerr
 	mysqlDB := mysql.GetDB()
 
 	var location Location
-	location.Desc = param.Desc
+
 	location.Name = param.Name
+	location.Desc = param.Desc
+	location.LocationDesc = param.LocationDesc
 	location.Frequency = param.Frequency
 	location.PeopleNum = param.PeopleNum
 	location.TimeStr = param.TimeStr
@@ -86,8 +90,8 @@ func AddLocation(ctx *gin.Context, param dto.AddLocationParam) (int, cerror.Cerr
 	location.Rating = param.Rating
 	location.Loc = "sda"
 
-	var sqlTemplate string = "INSERT INTO `location` (`name`,`desc`,`location`,`frequency`,`time_str`,`people_num`,`rating`) VALUES ( '%s', '%s',ST_GeomFromText('POINT(121.474103 31.232862)'),'%d','%s','%d', '%d');"
-	sqlStr := fmt.Sprintf(sqlTemplate, param.Name, param.Desc, param.Frequency, param.TimeStr, param.PeopleNum, param.Rating)
+	var sqlTemplate string = "INSERT INTO `location` (`name`,`desc`,`location_desc`,`location`,`frequency`,`time_str`,`people_num`,`rating`) VALUES ( '%s', '%s','%s',ST_GeomFromText('POINT(121.474103 31.232862)'),'%d','%s','%d', '%d');"
+	sqlStr := fmt.Sprintf(sqlTemplate, param.Name, param.Desc, param.LocationDesc, param.Frequency, param.TimeStr, param.PeopleNum, param.Rating)
 
 	var locationRes Location
 	result := mysqlDB.Raw(sqlStr).Find(&locationRes)

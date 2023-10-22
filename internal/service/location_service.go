@@ -16,6 +16,7 @@ func GetLocation(ctx *gin.Context, id int) (dto.LocationRes, cerror.Cerror) {
 	res.ID = location.ID
 	res.Desc = location.Desc
 	res.Name = location.Name
+	res.LocationDesc = location.LocationDesc
 	res.Rating = location.Rating
 	res.Latitude = 12
 	res.Longitude = 34
@@ -33,6 +34,7 @@ func GetAreaLocationList(ctx *gin.Context, param dto.GetLocationListParam) ([]dt
 		item.Rating = val.Rating
 		item.Name = common.GetShortStr(val.Name, common.TitleLength)
 		item.Desc = common.GetShortStr(val.Desc, common.DescLength)
+		item.LocationDesc = common.GetShortStr(val.LocationDesc, common.DescLength)
 		item.Longitude = 12
 		item.Latitude = 34
 		res = append(res, item)
@@ -51,6 +53,7 @@ func GetLocationHot(ctx *gin.Context) ([]dto.LocationRes, cerror.Cerror) {
 		item.ID = val.ID
 		item.Name = common.GetShortStr(val.Name, common.TitleLength)
 		item.Desc = common.GetShortStr(val.Desc, common.DescLength)
+		item.LocationDesc = common.GetShortStr(val.LocationDesc, common.DescLength)
 		item.Rating = val.Rating
 		item.Longitude = 12
 		item.Latitude = 34
